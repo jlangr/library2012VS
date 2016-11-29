@@ -5,8 +5,6 @@
 #include <vector>
 #include <memory>
 
-#include "boost/shared_ptr.hpp"
-
 template <typename T>
 class VectorReader
 {

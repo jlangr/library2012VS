@@ -1,6 +1,5 @@
 #pragma once
 
-#include "boost/shared_ptr.hpp"
 #include <string>
 #include <vector>
 #include <fstream>
@@ -14,7 +13,7 @@ class BranchAccess
 {
 public:
     BranchAccess();
-    explicit BranchAccess(boost::shared_ptr<Persistence<Branch>> persister);
+    explicit BranchAccess(std::shared_ptr<Persistence<Branch>> persister);
     virtual ~BranchAccess();
 
     static std::string DataFileName();
@@ -26,5 +25,5 @@ public:
     void DeleteAll();
 
 private:
-    boost::shared_ptr<Persistence<Branch>> mPersister;
+    std::shared_ptr<Persistence<Branch>> mPersister;
 };

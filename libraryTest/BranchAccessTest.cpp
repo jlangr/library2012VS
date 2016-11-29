@@ -5,15 +5,11 @@
 #include "Branch.h"
 
 #include <cstdio>
-#include "boost/shared_ptr.hpp"
-#include "boost/assign.hpp"
 
 #include "Persistence.h"
 
 using namespace std;
-using namespace boost;
 using namespace testing;
-using namespace boost::assign;
 
 class BranchAccessTest: public Test
 {
@@ -22,7 +18,7 @@ public:
     BranchAccess access2;
     BranchAccess* branchAccess;
 
-    shared_ptr<Persistence<Branch>> persister;
+    std::shared_ptr<Persistence<Branch>> persister;
 
     vector<Branch> noBranches;
     Branch* eastBranch;
