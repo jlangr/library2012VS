@@ -67,9 +67,6 @@
     <ClCompile Include="ScannerStateWaiting.cpp">
       <Filter>scanner</Filter>
     </ClCompile>
-    <ClCompile Include="ReportMailerOk.cpp">
-      <Filter>reporting</Filter>
-    </ClCompile>
     <ClCompile Include="Soundex.cpp">
       <Filter>unrelated</Filter>
     </ClCompile>
@@ -80,6 +77,9 @@
       <Filter>util</Filter>
     </ClCompile>
     <ClCompile Include="Transport.cpp">
+      <Filter>reporting</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportMailer.h">
       <Filter>reporting</Filter>
     </ClCompile>
   </ItemGroup>
@@ -180,20 +180,8 @@
     <ClInclude Include="Persistence.h">
       <Filter>util</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>unrelated</Filter>
-    </ClInclude>
-    <ClInclude Include="Portfolio.h">
-      <Filter>unrelated</Filter>
-    </ClInclude>
     <ClInclude Include="Report.h">
       <Filter>reporting</Filter>
-    </ClInclude>
-    <ClInclude Include="ReportMailer.h">
-      <Filter>reporting</Filter>
-    </ClInclude>
-    <ClInclude Include="Soundex.h">
-      <Filter>unrelated</Filter>
     </ClInclude>
     <ClInclude Include="StreamLineReader.h">
       <Filter>util</Filter>
@@ -219,6 +207,18 @@
     <ClInclude Include="VectorReader.h">
       <Filter>util</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>slns</Filter>
+    </ClInclude>
+    <ClInclude Include="Portfolio.h">
+      <Filter>slns</Filter>
+    </ClInclude>
+    <ClInclude Include="Soundex.h">
+      <Filter>slns</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportMailerTemplateSln.h">
+      <Filter>slns</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="domain">
@@ -241,6 +241,9 @@
     </Filter>
     <Filter Include="dataAccess">
       <UniqueIdentifier>{a5a3764b-cba3-46d3-92ca-cba10209bdc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="slns">
+      <UniqueIdentifier>{7d7b6da7-df1b-4b9c-b44b-63a19f6ee9f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

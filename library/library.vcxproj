@@ -91,7 +91,7 @@
     <ClCompile Include="Patron.cpp" />
     <ClCompile Include="PatronAccess.cpp" />
     <ClCompile Include="PatronService.cpp" />
-    <ClCompile Include="ReportMailerOk.cpp" />
+    <ClCompile Include="ReportMailer.h" />
     <ClCompile Include="Scanner.cpp" />
     <ClCompile Include="ScannerState.cpp" />
     <ClCompile Include="ScannerStateCheckin.cpp" />
@@ -134,7 +134,7 @@
     <ClInclude Include="Persistence.h" />
     <ClInclude Include="Portfolio.h" />
     <ClInclude Include="Report.h" />
-    <ClInclude Include="ReportMailer.h" />
+    <ClInclude Include="ReportMailerTemplateSln.h" />
     <ClInclude Include="Scanner.h" />
     <ClInclude Include="ScannerState.h" />
     <ClInclude Include="ScannerStateCheckin.h" />

@@ -19,9 +19,9 @@ const unsigned int InventoryReport::AUTHOR_LENGTH(24);
 const unsigned int InventoryReport::YEAR_LENGTH(6);
 const unsigned int InventoryReport::ISBN_LENGTH(10);
 
-InventoryReport::InventoryReport(Catalog* catalog, LibraryOfCongressAPI* isbnApi)
-    : mCatalog(catalog)
-    , mIsbnApi(isbnApi)
+InventoryReport::InventoryReport(Catalog* catalog)
+	: mCatalog(catalog)
+	, mIsbnApi(new LibraryOfCongressAPI())
 {
 }
 
@@ -49,7 +49,6 @@ std::string InventoryReport::Generate() {
         }
     }
 
-
     sort(records.begin(), records.end());
 
     stringstream buffer;
@@ -57,18 +56,12 @@ std::string InventoryReport::Generate() {
     AppendColumnHeaders(buffer);
     for (vector<Record>::iterator it = records.begin(); it != records.end();it++)
          Append(buffer, *it);
-    AppendFooter(buffer);
     return buffer.str();
 }
 
 void InventoryReport::AppendHeader(stringstream& buffer) {
     buffer << "Inventory" << endl;
     buffer << endl;
-}
-
-void InventoryReport::AppendFooter(stringstream& buffer)
-{
-    buffer << "Copyright (C) 2012 Langr Software Solutions";
 }
 
 void InventoryReport::AppendColumnHeaders(stringstream& buffer) {

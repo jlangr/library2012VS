@@ -6,7 +6,7 @@
 using namespace std;
 using namespace testing;
 
-int arabics[] = { 1000, 900, 50, 10, 5, 4, 1 };
+unsigned int arabics[] = { 1000, 900, 50, 10, 5, 4, 1 };
 string romans[] = { "M", "CM", "L", "X", "V", "IV", "I" };
 
 string Convert(unsigned int arabic)

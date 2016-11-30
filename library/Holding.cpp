@@ -9,10 +9,8 @@
 #include <vector>
 #include <cstdlib>
 #include "boost/date_time/gregorian/gregorian_types.hpp"
-//#include "boost/algorithm/string.hpp"
 
 using namespace boost::gregorian;
-// TODO using namespace boost::algorithm;
 using namespace std;
 
 Holding::Holding(const string& barcode)
@@ -23,8 +21,6 @@ Holding::Holding(const string& barcode)
     {
         throw InvalidBarcodeException();
     }
-    //vector<string> barcodeParts;
-//    boost::split(barcodeParts, barcode, boost::is_any_of(":"));
 	vector<string> barcodeParts = split(barcode, ':');
     string classification = barcodeParts[0];
     mCopyNumber = atoi(barcodeParts[1].c_str());

@@ -37,5 +37,5 @@ private:
 
 typedef std::vector<Branch>::iterator BranchIterator;
 
-std::istream& operator >>(std::istream&, Branch&);
-std::ostream& operator <<(std::ostream&, Branch&);
+std::istream& operator>>(std::istream&, Branch&);
+std::ostream& operator<<(std::ostream&, Branch&);

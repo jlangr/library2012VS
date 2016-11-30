@@ -54,9 +54,7 @@ public:
     static const unsigned int YEAR_LENGTH;
     static const unsigned int ISBN_LENGTH;
     
-    InventoryReport(Catalog*,
-        LibraryOfCongressAPI* isbnApi = new LibraryOfCongressAPI());
-
+    InventoryReport(Catalog*);
     ~InventoryReport(void);
     std::string Generate();
     void AppendHeader(std::stringstream& buffer);
@@ -64,7 +62,6 @@ public:
     void Append(std::stringstream& buffer, Record& record);
     std::string Underlines(unsigned int count, unsigned int spacing);
     std::string Pad(unsigned int totalLength, const std::string& text="");
-    void AppendFooter(std::stringstream& buffer);
 private:
     Catalog* mCatalog;
     LibraryOfCongressAPI* mIsbnApi;

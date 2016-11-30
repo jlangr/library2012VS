@@ -8,9 +8,6 @@
     <ClCompile Include="BookTest.cpp">
       <Filter>domain</Filter>
     </ClCompile>
-    <ClCompile Include="BowlingTest.cpp">
-      <Filter>unrelated</Filter>
-    </ClCompile>
     <ClCompile Include="BranchAccessTest.cpp">
       <Filter>dataAccess</Filter>
     </ClCompile>
@@ -41,16 +38,10 @@
     <ClCompile Include="KeyedMemoryPersistenceTest.cpp">
       <Filter>util</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryReportTest.cpp">
-      <Filter>reporting</Filter>
-    </ClCompile>
     <ClCompile Include="PersistenceTest.cpp">
       <Filter>util</Filter>
     </ClCompile>
     <ClCompile Include="PortfolioTest.cpp">
-      <Filter>unrelated</Filter>
-    </ClCompile>
-    <ClCompile Include="RomanConverterTest.cpp">
       <Filter>unrelated</Filter>
     </ClCompile>
     <ClCompile Include="ScannerStateCheckinTest.cpp">
@@ -83,9 +74,6 @@
     <ClCompile Include="StreamLineReaderTest.cpp">
       <Filter>util</Filter>
     </ClCompile>
-    <ClCompile Include="ReportMailerTest.cpp">
-      <Filter>reporting</Filter>
-    </ClCompile>
     <ClCompile Include="PatronTest.cpp">
       <Filter>domain</Filter>
     </ClCompile>
@@ -94,6 +82,18 @@
     </ClCompile>
     <ClCompile Include="PatronAccessTest.cpp">
       <Filter>dataAccess</Filter>
+    </ClCompile>
+    <ClCompile Include="RomanConverterTest.cpp">
+      <Filter>slns</Filter>
+    </ClCompile>
+    <ClCompile Include="BowlingTest.cpp">
+      <Filter>slns</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportMailerTestSln.cpp">
+      <Filter>slns</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryReportTestSln.cpp">
+      <Filter>slns</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +140,9 @@
     </Filter>
     <Filter Include="reporting">
       <UniqueIdentifier>{4f2be910-f405-4669-97dd-43c5710471a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="slns">
+      <UniqueIdentifier>{8afa4177-ca07-417a-90cb-e08479153ee3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

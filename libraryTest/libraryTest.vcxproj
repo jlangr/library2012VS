@@ -62,6 +62,7 @@
       <AdditionalLibraryDirectories>..\boost\libs;..\googletest\googlemock\msvc\2015\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -92,7 +93,7 @@
     <ClCompile Include="HoldingBarcodeTest.cpp" />
     <ClCompile Include="HoldingServiceTest.cpp" />
     <ClCompile Include="HoldingTest.cpp" />
-    <ClCompile Include="InventoryReportTest.cpp" />
+    <ClCompile Include="InventoryReportTestSln.cpp" />
     <ClCompile Include="KeyedFilePersistenceTest.cpp" />
     <ClCompile Include="KeyedMemoryPersistenceTest.cpp" />
     <ClCompile Include="library.cpp" />
@@ -101,7 +102,7 @@
     <ClCompile Include="PatronTest.cpp" />
     <ClCompile Include="PersistenceTest.cpp" />
     <ClCompile Include="PortfolioTest.cpp" />
-    <ClCompile Include="ReportMailerTest.cpp" />
+    <ClCompile Include="ReportMailerTestSln.cpp" />
     <ClCompile Include="RomanConverterTest.cpp" />
     <ClCompile Include="ScannerStateCheckinTest.cpp" />
     <ClCompile Include="ScannerStateCheckoutTest.cpp" />
