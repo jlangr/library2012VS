@@ -49,7 +49,7 @@ bool BranchAccess::Find(Branch& branch) const
         return false;
     }
     branch = *retrieved;
-	return true;
+    return true;
 }
 
 int BranchAccess::Size() const

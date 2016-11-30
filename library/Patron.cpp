@@ -7,10 +7,10 @@
 
 using namespace std;
 
-Patron::Patron(const string& name, int id) 
-	: mName(name)
-	, mId(id)
-	, mBalance(0) 
+Patron::Patron(const string& name, int id)
+    : mName(name)
+    , mId(id)
+    , mBalance(0)
 {
 }
 
@@ -29,57 +29,57 @@ string Patron::CardNumber() const
     return text.str();
 }
 
-std::ostream& operator<<(std::ostream& stream, Patron& patron) 
+std::ostream& operator<<(std::ostream& stream, Patron& patron)
 {
-	return stream << patron.Name() << " (" << patron.CardNumber() << ")";
+    return stream << patron.Name() << " (" << patron.CardNumber() << ")";
 }
 
 string Patron::Name() const
 {
-	return mName;
+    return mName;
 }
 
 int Patron::Id() const
 {
-	return mId;
+    return mId;
 }
 
 int Patron::FineBalance() const
 {
-	return mBalance;
+    return mBalance;
 }
 
-void Patron::AddFine(int amount) 
+void Patron::AddFine(int amount)
 {
-	mBalance += amount;
+    mBalance += amount;
 }
 
-void Patron::Remit(int amount) 
+void Patron::Remit(int amount)
 {
-	mBalance -= amount;
+    mBalance -= amount;
 }
 
 set<Holding> Patron::Holdings() const
 {
-	return mHoldings;
+    return mHoldings;
 }
 
 void Patron::Borrow(const Holding& holding)
 {
-	mHoldings.insert(holding);
+    mHoldings.insert(holding);
 }
 
 void Patron::ReturnHolding(const Holding& holding)
 {
-	mHoldings.erase(holding);
+    mHoldings.erase(holding);
 }
 
 bool Patron::operator==(const Patron& rhs) const
 {
-	return mId == rhs.mId;
+    return mId == rhs.mId;
 }
 
 bool Patron::operator!=(const Patron& rhs) const
 {
-	return !(*this == rhs);
+    return !(*this == rhs);
 }

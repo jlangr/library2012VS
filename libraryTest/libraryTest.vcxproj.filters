@@ -41,9 +41,6 @@
     <ClCompile Include="PersistenceTest.cpp">
       <Filter>util</Filter>
     </ClCompile>
-    <ClCompile Include="PortfolioTest.cpp">
-      <Filter>unrelated</Filter>
-    </ClCompile>
     <ClCompile Include="ScannerStateCheckinTest.cpp">
       <Filter>scanner</Filter>
     </ClCompile>
@@ -93,6 +90,9 @@
       <Filter>slns</Filter>
     </ClCompile>
     <ClCompile Include="InventoryReportTestSln.cpp">
+      <Filter>slns</Filter>
+    </ClCompile>
+    <ClCompile Include="PortfolioTestSln.cpp">
       <Filter>slns</Filter>
     </ClCompile>
   </ItemGroup>

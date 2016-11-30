@@ -16,21 +16,21 @@ public:
     const static string SOFT_CONSONANTS;
     const static string VOWELS;
 
-    Soundex(void) 
+    Soundex(void)
     {
         InitializeConsonantToDigitTable();
     }
     virtual ~Soundex(void) {}
 
-	string Convert(const string& name) 
-	{
-		return "";
-	}
+    string Convert(const string& name)
+    {
+        return "";
+    }
 
     // +++ do not change any of these helper methods +++
     char Digit(char consonant) const
     {
-        map<char,char>::const_iterator it = consonantIndices.find(consonant);
+        map<char, char>::const_iterator it = consonantIndices.find(consonant);
         if (it == consonantIndices.end())
             return '0';
         return it->second;
@@ -54,7 +54,7 @@ public:
 
 
 private:
-    map<char,char> consonantIndices;
+    map<char, char> consonantIndices;
 
     void InitializeConsonantToDigitTable()
     {

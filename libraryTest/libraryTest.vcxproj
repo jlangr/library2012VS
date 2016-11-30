@@ -101,7 +101,7 @@
     <ClCompile Include="PatronServiceTest.cpp" />
     <ClCompile Include="PatronTest.cpp" />
     <ClCompile Include="PersistenceTest.cpp" />
-    <ClCompile Include="PortfolioTest.cpp" />
+    <ClCompile Include="PortfolioTestSln.cpp" />
     <ClCompile Include="ReportMailerTestSln.cpp" />
     <ClCompile Include="RomanConverterTest.cpp" />
     <ClCompile Include="ScannerStateCheckinTest.cpp" />

@@ -21,7 +21,7 @@ Holding::Holding(const string& barcode)
     {
         throw InvalidBarcodeException();
     }
-	vector<string> barcodeParts = split(barcode, ':');
+    vector<string> barcodeParts = split(barcode, ':');
     string classification = barcodeParts[0];
     mCopyNumber = atoi(barcodeParts[1].c_str());
     mClassification = classification;
@@ -37,21 +37,21 @@ Holding::Holding(const string& classification, unsigned short copyNumber)
 
 // TODO move to utility class
 vector<string> Holding::split(const string &text, char sep) {
-	vector<string> tokens;
-	size_t start = 0, end = 0;
-	while ((end = text.find(sep, start)) != string::npos) {
-		tokens.push_back(text.substr(start, end - start));
-		start = end + 1;
-	}
-	tokens.push_back(text.substr(start));
-	return tokens;
+    vector<string> tokens;
+    size_t start = 0, end = 0;
+    while ((end = text.find(sep, start)) != string::npos) {
+        tokens.push_back(text.substr(start, end - start));
+        start = end + 1;
+    }
+    tokens.push_back(text.substr(start));
+    return tokens;
 }
 
 Holding::Holding()
-	: mClassification("")
-	, mCopyNumber(1)
-	, mBranch(Branch::CHECKED_OUT)
-	, mLastCheckedOutOn()
+    : mClassification("")
+    , mCopyNumber(1)
+    , mBranch(Branch::CHECKED_OUT)
+    , mLastCheckedOutOn()
 {
 }
 
@@ -61,17 +61,17 @@ Holding::~Holding()
 
 bool Holding::operator==(const Holding& rhs) const
 {
-	return Barcode() == rhs.Barcode();
+    return Barcode() == rhs.Barcode();
 }
 
 bool Holding::operator<(const Holding& rhs) const
 {
-	return Barcode() < rhs.Barcode();
+    return Barcode() < rhs.Barcode();
 }
 
 bool Holding::operator!=(const Holding& rhs) const
 {
-	return !(*this == rhs);
+    return !(*this == rhs);
 }
 
 string Holding::Classification() const
@@ -81,17 +81,17 @@ string Holding::Classification() const
 
 unsigned short Holding::CopyNumber() const
 {
-	return mCopyNumber;
+    return mCopyNumber;
 }
 
 Branch Holding::CurrentBranch() const
 {
-	return mBranch;
+    return mBranch;
 }
 
 void Holding::Transfer(Branch& branch)
 {
-	mBranch = branch;
+    mBranch = branch;
 }
 
 string Holding::Barcode() const
@@ -100,27 +100,27 @@ string Holding::Barcode() const
 }
 
 /* static */ string Holding::ConstructBarcode(
-	const string& classification, const int& copyNumber)
+    const string& classification, const int& copyNumber)
 {
-	stringstream buffer;
-	buffer << classification << ":" << copyNumber;
-	return buffer.str();
+    stringstream buffer;
+    buffer << classification << ":" << copyNumber;
+    return buffer.str();
 }
 
 void Holding::CheckOut(date checkOutDate)
 {
-	mLastCheckedOutOn = checkOutDate;
-	mBranch = Branch::CHECKED_OUT;
+    mLastCheckedOutOn = checkOutDate;
+    mBranch = Branch::CHECKED_OUT;
 }
 
 void Holding::CheckIn(date checkInDate, const Branch& branch)
 {
-	mBranch = branch;
+    mBranch = branch;
 }
 
-date Holding::LastCheckedOutOn() const 
+date Holding::LastCheckedOutOn() const
 {
-	return mLastCheckedOutOn;
+    return mLastCheckedOutOn;
 }
 
 date Holding::DueDate() const
@@ -128,28 +128,28 @@ date Holding::DueDate() const
     // should this go into HoldingService?
 
     // figure out how long the book can be held
-   int period = 0;
-      
-   ClassificationService svc;
-   Book book = svc.RetrieveDetails(mClassification);
-   switch (book.Type()) {
-      case Book::TYPE_BOOK:
-         period = Book::BOOK_CHECKOUT_PERIOD;
-         break;
-      case Book::TYPE_MOVIE:
-         period = Book::MOVIE_CHECKOUT_PERIOD;
-         break;
-      case Book::TYPE_NEW_RELEASE:
-         period = Book::NEW_RELEASE_CHECKOUT_PERIOD;
-         break;
-      default:
-         period = Book::BOOK_CHECKOUT_PERIOD;
-         break;
-      }
-	return mLastCheckedOutOn + date_duration(period);
+    int period = 0;
+
+    ClassificationService svc;
+    Book book = svc.RetrieveDetails(mClassification);
+    switch (book.Type()) {
+    case Book::TYPE_BOOK:
+        period = Book::BOOK_CHECKOUT_PERIOD;
+        break;
+    case Book::TYPE_MOVIE:
+        period = Book::MOVIE_CHECKOUT_PERIOD;
+        break;
+    case Book::TYPE_NEW_RELEASE:
+        period = Book::NEW_RELEASE_CHECKOUT_PERIOD;
+        break;
+    default:
+        period = Book::BOOK_CHECKOUT_PERIOD;
+        break;
+    }
+    return mLastCheckedOutOn + date_duration(period);
 }
 
 bool Holding::IsAvailable() const
 {
-	return Branch::CHECKED_OUT != mBranch;
+    return Branch::CHECKED_OUT != mBranch;
 }

@@ -12,7 +12,7 @@ using namespace std;
 using namespace ClassificationData;
 using namespace testing;
 
-class CatalogTest: public Test
+class CatalogTest : public Test
 {
 public:
     Catalog catalog;
@@ -20,31 +20,31 @@ public:
     Holding* catch22Holding;
     Holding* catch22HoldingCopy2;
 
-	virtual void SetUp()
-	{
-		Catalog::DeleteAll();
-		theTrialHolding = new Holding(THE_TRIAL_CLASSIFICATION, 1);
-		catch22Holding = new Holding(CATCH22_CLASSIFICATION, 1);
+    virtual void SetUp()
+    {
+        Catalog::DeleteAll();
+        theTrialHolding = new Holding(THE_TRIAL_CLASSIFICATION, 1);
+        catch22Holding = new Holding(CATCH22_CLASSIFICATION, 1);
         catch22HoldingCopy2 = new Holding(CATCH22_CLASSIFICATION, 2);
-	}
+    }
 
-	virtual void TearDown()
-	{
-		delete theTrialHolding;
-		delete catch22Holding;
+    virtual void TearDown()
+    {
+        delete theTrialHolding;
+        delete catch22Holding;
         delete catch22HoldingCopy2;
-		Catalog::DeleteAll();
+        Catalog::DeleteAll();
     }
 };
 
 TEST_F(CatalogTest, IsEmptyOnCreation)
 {
-	ASSERT_THAT(catalog.Size(), Eq(0));
+    ASSERT_THAT(catalog.Size(), Eq(0));
 }
 
 TEST_F(CatalogTest, AddIncrementsCount)
 {
-	catalog.Add(*theTrialHolding);
+    catalog.Add(*theTrialHolding);
 
     ASSERT_THAT(catalog.Size(), Eq(1));
 }
@@ -80,10 +80,10 @@ TEST_F(CatalogTest, FindByClassificationAnswersMatchingHoldings)
 {
     catalog.Add(*theTrialHolding);
     catalog.Add(*catch22Holding);
-	catalog.Add(*catch22HoldingCopy2);
+    catalog.Add(*catch22HoldingCopy2);
 
-	set<Holding> holdings;
+    set<Holding> holdings;
     catalog.FindByClassification(CATCH22_CLASSIFICATION, holdings);
 
-	ASSERT_THAT(holdings, Eq(set<Holding>{ *catch22Holding, *catch22HoldingCopy2 }));
+    ASSERT_THAT(holdings, Eq(set<Holding>{ *catch22Holding, *catch22HoldingCopy2 }));
 }

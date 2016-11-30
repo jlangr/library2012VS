@@ -5,20 +5,18 @@
 #include "CreditVerifier.h"
 
 #include "gmock/gmock.h"
-//#include "boost/assign/list_of.hpp"
 
 using namespace ClassificationData;
-//using namespace boost::assign;
 using namespace testing;
 using namespace std;
 
-class StubCreditVerifier: public CreditVerifier
+class StubCreditVerifier : public CreditVerifier
 {
 public:
     MOCK_METHOD1(Verify, bool(const std::string& cardNumber));
 };
 
-class PatronServiceTest: public Test
+class PatronServiceTest : public Test
 {
 public:
     static const string CARD_NUMBER;
@@ -51,26 +49,11 @@ TEST_F(PatronServiceTest, CountInitiallyZero)
 
 TEST_F(PatronServiceTest, AddUsingAttributes)
 {
-    EXPECT_CALL(verifier, Verify(CARD_NUMBER))
-        .WillOnce(Return(true));
-    PatronService service(&verifier);
-    service.Add("Suresh", 20, CARD_NUMBER);
+    service.Add("Suresh", 20);
 
     Patron retrieved("", 20);
     service.Find(retrieved);
     ASSERT_THAT(retrieved.Name(), Eq("Suresh"));
-}
-
-TEST_F(PatronServiceTest, AddFailsWhenPatronHasBadCredit)
-{
-    EXPECT_CALL(verifier, Verify(CARD_NUMBER))
-        .WillOnce(Return(false));
-    PatronService service(&verifier);
-
-    service.Add("Joe", 10, CARD_NUMBER);
-
-    Patron retrieved("", 10);
-    ASSERT_THAT(service.Find(retrieved), Eq(false));
 }
 
 TEST_F(PatronServiceTest, AddIncrementsCount)
@@ -116,7 +99,7 @@ TEST_F(PatronServiceTest, FindAnswersTrueForAddedPatron)
     ASSERT_THAT(found, Eq(true));
 }
 
-TEST_F(PatronServiceTest, FindRetrievesByCardNumber)
+TEST_F(PatronServiceTest, FindRetrieves)
 {
     service.Add(*joe);
     Patron retrieved("dummy name", joe->Id());
@@ -135,7 +118,7 @@ TEST_F(PatronServiceTest, MembersFullyPopulatedInFoundPatron)
     Patron retrieved("", joe->Id());
 
     service.Find(retrieved);
-    
+
     ASSERT_THAT(retrieved.FineBalance(), Eq(20));
-	ASSERT_THAT(retrieved.Holdings(), Eq(set<Holding>{ theTrial }));
+    ASSERT_THAT(retrieved.Holdings(), Eq(set<Holding>{ theTrial }));
 }

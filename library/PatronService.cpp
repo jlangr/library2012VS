@@ -1,14 +1,12 @@
 #include "PatronService.h"
 #include "PatronAccess.h"
 #include "Patron.h"
-#include "CreditVerifier.h"
 
 #include <vector>
 
 using namespace std;
 
-PatronService::PatronService(CreditVerifier* verifier)
-    : mCreditVerifier(verifier) // TODO: leak!
+PatronService::PatronService() 
 {
 }
 
@@ -21,21 +19,13 @@ PatronService::~PatronService(void)
     PatronAccess::DeleteAll();
 }
 
-void PatronService::SetCreditVerifier(CreditVerifier* verifier)
-{
-    mCreditVerifier = verifier;
-}
-
 vector<Patron> PatronService::GetAll() const
 {
     return mPatronAccess.GetAll();
 }
 
-void PatronService::Add(const string& name, int id, const string& cardNumber)
+void PatronService::Add(const string& name, int id)
 {
-    if (!mCreditVerifier->Verify(cardNumber))
-        return;
-
     Patron patron(name, id);
     Add(patron);
 }

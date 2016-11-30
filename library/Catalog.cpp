@@ -27,31 +27,31 @@ vector<Holding>* Catalog::Holdings()
 
 unsigned int Catalog::Size() const
 {
-	return Catalog::Holdings()->size();
+    return Catalog::Holdings()->size();
 }
 
 void Catalog::Add(Holding& holding)
 {
-	Catalog::Holdings()->push_back(holding);
+    Catalog::Holdings()->push_back(holding);
 }
 
 void Catalog::Update(Holding& holding)
 {
     vector<Holding>* holdings = Catalog::Holdings();
-	HoldingIterator it = find(holdings->begin(), holdings->end(), holding);
+    HoldingIterator it = find(holdings->begin(), holdings->end(), holding);
     // TODO: throw if not found? need a test!
-	*it = holding;
-} 
+    *it = holding;
+}
 
 void Catalog::FindByClassification(
-	const string& classification, set<Holding>& holdingsCollector) const
+    const string& classification, set<Holding>& holdingsCollector) const
 {
     vector<Holding> holdings = *Catalog::Holdings();
-	for (HoldingIterator it = holdings.begin(); it != holdings.end(); it++)
+    for (HoldingIterator it = holdings.begin(); it != holdings.end(); it++)
     {
         if (classification == it->Classification())
         {
-			holdingsCollector.insert(*it);
+            holdingsCollector.insert(*it);
         }
     }
 }
@@ -70,9 +70,9 @@ bool Catalog::FindByBarCode(Holding& holding) const
 
 void Catalog::DeleteAll()
 {
-	if (mHoldings)
-	{
-		delete mHoldings;
-		mHoldings = NULL;
-	}
+    if (mHoldings)
+    {
+        delete mHoldings;
+        mHoldings = NULL;
+    }
 }

@@ -10,7 +10,7 @@
 class Holding
 {
 public:
-	Holding();
+    Holding();
     explicit Holding(const std::string& barcode);
     Holding(const std::string& classification, unsigned short copyNumber);
     virtual ~Holding();
@@ -19,12 +19,12 @@ public:
         const std::string& classification, const int& copyNumber);
 
     bool operator==(const Holding& rhs) const;
-	bool operator!=(const Holding& rhs) const;
-	bool operator<(const Holding& rhs) const;
+    bool operator!=(const Holding& rhs) const;
+    bool operator<(const Holding& rhs) const;
 
     Branch CurrentBranch() const;
     unsigned short CopyNumber() const;
-	std::string Barcode() const;
+    std::string Barcode() const;
     boost::gregorian::date LastCheckedOutOn() const;
     boost::gregorian::date DueDate() const;
     bool IsAvailable() const;
@@ -32,14 +32,14 @@ public:
 
     void Transfer(Branch&);
     void CheckOut(boost::gregorian::date);
-	void CheckIn(boost::gregorian::date, const Branch&);
+    void CheckIn(boost::gregorian::date, const Branch&);
 
 private:
-	std::vector<std::string> split(const std::string&, char sep);
+    std::vector<std::string> split(const std::string&, char sep);
     std::string mClassification;
-	unsigned short mCopyNumber;
-	Branch mBranch;
-	boost::gregorian::date mLastCheckedOutOn;
+    unsigned short mCopyNumber;
+    Branch mBranch;
+    boost::gregorian::date mLastCheckedOutOn;
 };
 
 typedef std::vector<Holding>::iterator HoldingIterator;

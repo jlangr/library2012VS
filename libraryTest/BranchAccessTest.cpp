@@ -11,7 +11,7 @@
 using namespace std;
 using namespace testing;
 
-class BranchAccessTest: public Test
+class BranchAccessTest : public Test
 {
 public:
     BranchAccess access;
@@ -24,17 +24,17 @@ public:
     Branch* eastBranch;
 
     virtual void SetUp()
-	{
+    {
         branchAccess = new BranchAccess();
         branchAccess->DeleteAll();
 
         eastBranch = new Branch("1", "east");
-        
+
         access.DeleteAll();
     }
 
-	virtual void TearDown()
-	{
+    virtual void TearDown()
+    {
         branchAccess->DeleteAll();
         delete branchAccess;
         delete eastBranch;

@@ -9,16 +9,16 @@
 using namespace std;
 using namespace testing;
 
-class VectorReaderTest: public Test
+class VectorReaderTest : public Test
 {
 public:
 };
 
 TEST_F(VectorReaderTest, CanRead)
 {
-    vector<TestSerializable> objects = 
-		{ TestSerializable("a", "10"), 
-		TestSerializable("b", "42") };
+    vector<TestSerializable> objects =
+    { TestSerializable("a", "10"),
+    TestSerializable("b", "42") };
 
     VectorWriter<TestSerializable> writer("test.dat");
     writer.WriteAll(objects);

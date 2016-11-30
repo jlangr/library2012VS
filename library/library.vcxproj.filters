@@ -210,14 +210,14 @@
     <ClInclude Include="Game.h">
       <Filter>slns</Filter>
     </ClInclude>
-    <ClInclude Include="Portfolio.h">
+    <ClInclude Include="ReportMailerTemplateSln.h">
+      <Filter>slns</Filter>
+    </ClInclude>
+    <ClInclude Include="PortfolioSln.h">
       <Filter>slns</Filter>
     </ClInclude>
     <ClInclude Include="Soundex.h">
-      <Filter>slns</Filter>
-    </ClInclude>
-    <ClInclude Include="ReportMailerTemplateSln.h">
-      <Filter>slns</Filter>
+      <Filter>unrelated</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
