@@ -22,7 +22,7 @@ public:
     static std::vector<Holding>* Holdings();
 
 private:
-    Catalog(const Catalog&);
+    Catalog(const Catalog&) = delete;
 
     static std::vector<Holding>* mHoldings;
 };

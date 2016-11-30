@@ -21,8 +21,8 @@ public:
     static void DeleteAll();
 
 private:
-    PatronAccess& operator=(const PatronAccess&);
-    PatronAccess(const PatronAccess&);
+    PatronAccess& operator=(const PatronAccess&) = delete;
+    PatronAccess(const PatronAccess&) = delete;
 
     std::vector<Patron>::iterator Locate(const Patron&) const;
     std::vector<Patron>::iterator PatronAccess::Begin() const;

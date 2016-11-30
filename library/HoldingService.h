@@ -36,8 +36,8 @@ namespace service {
         void FindByClassification(const std::string& classification, std::set<Holding>& holdings) const;
 
     private:
-        HoldingService(const HoldingService&);
-        HoldingService& operator=(const HoldingService&);
+        HoldingService(const HoldingService&) = delete;
+        HoldingService& operator=(const HoldingService&) = delete;
 
         PatronService mPatronService;
         BranchService mBranchService;
