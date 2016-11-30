@@ -7,7 +7,6 @@
 *.ilk
 *.log
 *.tlog
-*.vcxproj.filters
 *.vcxproj.user
 **/*.VC.*db
 **/Debug/*

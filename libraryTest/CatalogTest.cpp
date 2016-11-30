@@ -3,7 +3,6 @@
 #include "ClassificationData.h"
 
 #include "gmock/gmock.h"
-//#include "boost/assign/list_of.hpp"
 
 #include <set>
 #include <vector>
@@ -11,7 +10,6 @@
 
 using namespace std;
 using namespace ClassificationData;
-//using namespace boost::assign;
 using namespace testing;
 
 class CatalogTest: public Test
@@ -80,14 +78,12 @@ TEST_F(CatalogTest, FindByBarCodePopulatesMembers)
 
 TEST_F(CatalogTest, FindByClassificationAnswersMatchingHoldings)
 {
- //   catalog.Add(*theTrialHolding);
- //   catalog.Add(*catch22Holding);
-	//catalog.Add(*catch22HoldingCopy2);
-	//set<Holding> holdings;
+    catalog.Add(*theTrialHolding);
+    catalog.Add(*catch22Holding);
+	catalog.Add(*catch22HoldingCopy2);
 
- //   catalog.FindByClassification(CATCH22_CLASSIFICATION, holdings);
+	set<Holding> holdings;
+    catalog.FindByClassification(CATCH22_CLASSIFICATION, holdings);
 
-	//// TODO inline
-	//vector<Holding> expected{ *catch22Holding, *catch22HoldingCopy2 };
-	//ASSERT_THAT(holdings, Eq(expected));
+	ASSERT_THAT(holdings, Eq(set<Holding>{ *catch22Holding, *catch22HoldingCopy2 }));
 }
