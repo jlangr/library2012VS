@@ -122,10 +122,6 @@
     <ClInclude Include="SoundexListener.h" />
     <ClInclude Include="TestScanner.h" />
     <ClInclude Include="TestSerializable.h" />
-    <ClInclude Include="UndoRedoStack.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="HoldingTests.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\library\library.vcxproj">

@@ -23,7 +23,7 @@
       <Filter>service</Filter>
     </ClCompile>
     <ClCompile Include="BranchAccess.cpp">
-      <Filter>access</Filter>
+      <Filter>dataAccess</Filter>
     </ClCompile>
     <ClCompile Include="InventoryReport.cpp">
       <Filter>reporting</Filter>
@@ -35,7 +35,7 @@
       <Filter>reporting</Filter>
     </ClCompile>
     <ClCompile Include="PatronAccess.cpp">
-      <Filter>access</Filter>
+      <Filter>dataAccess</Filter>
     </ClCompile>
     <ClCompile Include="Endpoint.cpp">
       <Filter>reporting</Filter>
@@ -106,7 +106,7 @@
       <Filter>service</Filter>
     </ClInclude>
     <ClInclude Include="BranchAccess.h">
-      <Filter>access</Filter>
+      <Filter>dataAccess</Filter>
     </ClInclude>
     <ClInclude Include="InventoryReport.h">
       <Filter>reporting</Filter>
@@ -118,7 +118,7 @@
       <Filter>reporting</Filter>
     </ClInclude>
     <ClInclude Include="PatronAccess.h">
-      <Filter>access</Filter>
+      <Filter>dataAccess</Filter>
     </ClInclude>
     <ClInclude Include="BarcodeUtil.h">
       <Filter>domain</Filter>
@@ -142,7 +142,7 @@
       <Filter>service</Filter>
     </ClInclude>
     <ClInclude Include="PatronNotFoundException.h">
-      <Filter>access</Filter>
+      <Filter>dataAccess</Filter>
     </ClInclude>
     <ClInclude Include="KeyedMemoryPersistence.h">
       <Filter>util</Filter>
@@ -227,9 +227,6 @@
     <Filter Include="service">
       <UniqueIdentifier>{e9dde454-fc26-43d8-a244-abc6d777b40b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="access">
-      <UniqueIdentifier>{a5a3764b-cba3-46d3-92ca-cba10209bdc2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="reporting">
       <UniqueIdentifier>{953a56ea-abb7-4911-a4b9-976924300a68}</UniqueIdentifier>
     </Filter>
@@ -241,6 +238,9 @@
     </Filter>
     <Filter Include="unrelated">
       <UniqueIdentifier>{feb79723-77a7-4c6d-a16e-1dfbd0b5b71c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataAccess">
+      <UniqueIdentifier>{a5a3764b-cba3-46d3-92ca-cba10209bdc2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
