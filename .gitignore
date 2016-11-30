@@ -11,3 +11,4 @@
 **/*.VC.*db
 **/Debug/*
 **/Backup/*
+test.dat
