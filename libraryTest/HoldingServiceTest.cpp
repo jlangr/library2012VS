@@ -9,12 +9,10 @@
 #include "HoldingBarcode.h"
 
 #include "boost/date_time/gregorian/gregorian_types.hpp"
-#include "boost/assign/list_of.hpp"
 
 using namespace std;
 using namespace testing;
 using namespace ClassificationData;
-using namespace boost::assign;
 using namespace boost::gregorian;
 using namespace service;
 
@@ -182,13 +180,13 @@ TEST_F(HoldingServiceTest, FindByClassificationReturnsMultipleMatches)
     holdingService.AddAtBranch(branch1->Id(), HoldingBarcode(THE_TRIAL_CLASSIFICATION, 1).AsString());
     holdingService.AddAtBranch(branch1->Id(), HoldingBarcode(THE_TRIAL_CLASSIFICATION, 2).AsString());
     holdingService.AddAtBranch(branch1->Id(), HoldingBarcode(CATCH22_CLASSIFICATION, 1).AsString());
-    set<Holding> holdings;
 
+    set<Holding> holdings;
     holdingService.FindByClassification(THE_TRIAL_CLASSIFICATION, holdings);
 
     Holding trialCopy1(THE_TRIAL_CLASSIFICATION, 1);
     Holding trialCopy2(THE_TRIAL_CLASSIFICATION, 2);
-    ASSERT_THAT(holdings, Eq(list_of(trialCopy1)(trialCopy2)));
+	ASSERT_THAT(holdings, Eq(set<Holding>{ trialCopy1, trialCopy2 }));
 }
 
 TEST_F(HoldingServiceTest, Transfer)
@@ -222,7 +220,8 @@ TEST_F(HoldingServiceTest, CheckedOutBooksAddedToPatron)
     holdingService.CheckOut("p1001", HoldingBarcode(CATCH22_CLASSIFICATION, 1).AsString(), *arbitraryDate);
 
     Holding holding(HoldingBarcode(CATCH22_CLASSIFICATION, 1).AsString());
-    ASSERT_THAT(FindPatronWithId("p1001").Holdings(), Eq(list_of(holding)));
+	ASSERT_THAT(FindPatronWithId("p1001").Holdings(), 
+		Eq(set<Holding>{holding}));
 }
 
 TEST_F(HoldingServiceTest, CheckInUpdatesHoldingBranch)
@@ -263,7 +262,7 @@ TEST_F(HoldingServiceTest, CheckInLateUpdatesPatronFineBalance)
     HoldingBarcode barcode(THE_TRIAL_CLASSIFICATION, 1);
     string patronCardNumber("p5");
     CheckOut(barcode, branch1, patronCardNumber);
-    date_duration oneDayLate(Book::BOOK_CHECKOUT_PERIOD + 1);
+	date_duration oneDayLate(Book::BOOK_CHECKOUT_PERIOD + 1);
 
     holdingService.CheckIn(barcode.AsString(), *arbitraryDate + oneDayLate, branch2->Id());
 

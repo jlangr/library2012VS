@@ -9,10 +9,10 @@
 #include <vector>
 #include <cstdlib>
 #include "boost/date_time/gregorian/gregorian_types.hpp"
-#include "boost/algorithm/string.hpp"
+//#include "boost/algorithm/string.hpp"
 
 using namespace boost::gregorian;
-using namespace boost::algorithm;
+// TODO using namespace boost::algorithm;
 using namespace std;
 
 Holding::Holding(const string& barcode)
@@ -23,8 +23,9 @@ Holding::Holding(const string& barcode)
     {
         throw InvalidBarcodeException();
     }
-    vector<string> barcodeParts;
-    boost::split(barcodeParts, barcode, boost::is_any_of(":"));
+    //vector<string> barcodeParts;
+//    boost::split(barcodeParts, barcode, boost::is_any_of(":"));
+	vector<string> barcodeParts = split(barcode, ':');
     string classification = barcodeParts[0];
     mCopyNumber = atoi(barcodeParts[1].c_str());
     mClassification = classification;
@@ -36,6 +37,18 @@ Holding::Holding(const string& classification, unsigned short copyNumber)
     , mBranch(Branch::CHECKED_OUT)
     , mLastCheckedOutOn()
 {
+}
+
+// TODO move to utility class
+vector<string> Holding::split(const string &text, char sep) {
+	vector<string> tokens;
+	size_t start = 0, end = 0;
+	while ((end = text.find(sep, start)) != string::npos) {
+		tokens.push_back(text.substr(start, end - start));
+		start = end + 1;
+	}
+	tokens.push_back(text.substr(start));
+	return tokens;
 }
 
 Holding::Holding()

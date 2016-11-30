@@ -9,6 +9,6 @@
 *.tlog
 *.vcxproj.filters
 *.vcxproj.user
-**/*.VC.db
+**/*.VC.*db
 **/Debug/*
 **/Backup/*

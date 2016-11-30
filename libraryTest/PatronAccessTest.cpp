@@ -5,11 +5,11 @@
 #include "PatronNotFoundException.h"
 
 #include <vector>
-#include "boost/assign/std/vector.hpp"
-#include "boost/assign/list_of.hpp"
+//#include "boost/assign/std/vector.hpp"
+//#include "boost/assign/list_of.hpp"
 
 using std::vector;
-using namespace boost::assign;
+//using namespace boost::assign;
 using namespace testing;
 
 class PatronAccessTest: public Test
@@ -119,7 +119,7 @@ TEST_F(PatronAccessTest, GetAllAnswersAllSavedPatrons)
 	access.Save(patron1);
 	access.Save(patron2);
 
-	vector<Patron> expected = list_of(patron1)(patron2);	
+	vector<Patron> expected{ patron1, patron2 };
 
 	ASSERT_THAT(access.GetAll(), ContainerEq(expected));
 }

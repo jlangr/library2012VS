@@ -4,14 +4,11 @@
 #include "Holding.h"
 #include "ClassificationData.h"
 
-#include "boost/assign/list_of.hpp"
-
 #include <string>
 #include <strstream>
 
 using namespace std;
 using namespace ClassificationData;
-using namespace boost::assign;
 using namespace testing;
 
 class PatronTest: public Test
@@ -115,7 +112,7 @@ TEST_F(PatronTest, HoldingsContainsBorrowedBooks)
 	jane->Borrow(*theTrialHolding);
 	jane->Borrow(*catch22Holding);
 
-    ASSERT_THAT(jane->Holdings(), Eq(list_of(*theTrialHolding)(*catch22Holding)));
+    ASSERT_THAT(jane->Holdings(), Eq(set<Holding>{ *theTrialHolding, *catch22Holding }));
 }
 
 TEST_F(PatronTest, HoldingsDoesNotContainReturnedBooks)
@@ -125,7 +122,7 @@ TEST_F(PatronTest, HoldingsDoesNotContainReturnedBooks)
 
     jane->ReturnHolding(*theTrialHolding);
 
-    ASSERT_THAT(jane->Holdings(), Eq(list_of(*catch22Holding)));
+    ASSERT_THAT(jane->Holdings(), Eq(set<Holding>{ *catch22Holding }));
 }
 
 TEST_F(PatronTest, Equality)

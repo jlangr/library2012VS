@@ -5,10 +5,10 @@
 #include "CreditVerifier.h"
 
 #include "gmock/gmock.h"
-#include "boost/assign/list_of.hpp"
+//#include "boost/assign/list_of.hpp"
 
 using namespace ClassificationData;
-using namespace boost::assign;
+//using namespace boost::assign;
 using namespace testing;
 using namespace std;
 
@@ -137,5 +137,5 @@ TEST_F(PatronServiceTest, MembersFullyPopulatedInFoundPatron)
     service.Find(retrieved);
     
     ASSERT_THAT(retrieved.FineBalance(), Eq(20));
-    ASSERT_THAT(retrieved.Holdings(), Eq(list_of(theTrial)));
+	ASSERT_THAT(retrieved.Holdings(), Eq(set<Holding>{ theTrial }));
 }
