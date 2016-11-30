@@ -10,6 +10,4 @@ int main(int argc, char** argv) {
 //    TestEventListeners& listeners = UnitTest::GetInstance()->listeners();
 //    listeners.Append(new SoundexListener);
     RUN_ALL_TESTS();
-    // uncomment if you want to keep a VS popup console from closing before you can read it:
-//	std::getchar();
 }
