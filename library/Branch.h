@@ -31,11 +31,6 @@ private:
     std::string mId;
     std::string mName;
     std::string mAddress;
-    friend std::istream& operator>> (std::istream &, Branch&);
-    friend std::ostream& operator<<(std::ostream &, Branch&);
 };
 
 typedef std::vector<Branch>::iterator BranchIterator;
-
-std::istream& operator>> (std::istream&, Branch&);
-std::ostream& operator<<(std::ostream&, Branch&);
