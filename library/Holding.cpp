@@ -3,6 +3,7 @@
 #include "Branch.h"
 #include "ClassificationService.h"
 #include "InvalidBarcodeException.h"
+#include "StringUtil.h"
 
 #include <string>
 #include <sstream>
@@ -21,7 +22,7 @@ Holding::Holding(const string& barcode)
     {
         throw InvalidBarcodeException();
     }
-    vector<string> barcodeParts = split(barcode, ':');
+    vector<string> barcodeParts = StringUtil::split(barcode, ':');
     string classification = barcodeParts[0];
     mCopyNumber = atoi(barcodeParts[1].c_str());
     mClassification = classification;
@@ -33,18 +34,6 @@ Holding::Holding(const string& classification, unsigned short copyNumber)
     , mBranch(Branch::CHECKED_OUT)
     , mLastCheckedOutOn()
 {
-}
-
-// TODO move to utility class
-vector<string> Holding::split(const string &text, char sep) {
-    vector<string> tokens;
-    size_t start = 0, end = 0;
-    while ((end = text.find(sep, start)) != string::npos) {
-        tokens.push_back(text.substr(start, end - start));
-        start = end + 1;
-    }
-    tokens.push_back(text.substr(start));
-    return tokens;
 }
 
 Holding::Holding()

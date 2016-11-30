@@ -100,6 +100,7 @@
     <ClCompile Include="ScannerStateWaiting.cpp" />
     <ClCompile Include="Soundex.cpp" />
     <ClCompile Include="StreamLineReader.cpp" />
+    <ClCompile Include="StringUtil.cpp" />
     <ClCompile Include="TimestampSource.cpp" />
     <ClCompile Include="Transport.cpp" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="Soundex.h" />
     <ClInclude Include="StockService.h" />
     <ClInclude Include="StreamLineReader.h" />
+    <ClInclude Include="StringUtil.h" />
     <ClInclude Include="TimestampSource.h" />
     <ClInclude Include="Transport.h" />
     <ClInclude Include="VectorReader.h" />

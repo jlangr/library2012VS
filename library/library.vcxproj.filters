@@ -82,6 +82,9 @@
     <ClCompile Include="ReportMailer.h">
       <Filter>reporting</Filter>
     </ClCompile>
+    <ClCompile Include="StringUtil.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h">
@@ -218,6 +221,9 @@
     </ClInclude>
     <ClInclude Include="Soundex.h">
       <Filter>unrelated</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtil.h">
+      <Filter>util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,6 @@ public:
     void CheckIn(boost::gregorian::date, const Branch&);
 
 private:
-    std::vector<std::string> split(const std::string&, char sep);
     std::string mClassification;
     unsigned short mCopyNumber;
     Branch mBranch;
