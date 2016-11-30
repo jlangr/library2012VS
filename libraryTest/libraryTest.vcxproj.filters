@@ -95,6 +95,9 @@
     <ClCompile Include="PortfolioTestSln.cpp">
       <Filter>slns</Filter>
     </ClCompile>
+    <ClCompile Include="StringUtilTest.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ASSERT_CURRENT_STATE.h">

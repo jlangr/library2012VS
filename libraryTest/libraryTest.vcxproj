@@ -111,6 +111,7 @@
     <ClCompile Include="ScannerTest.cpp" />
     <ClCompile Include="ScannerTestData.cpp" />
     <ClCompile Include="SoundexTest.cpp" />
+    <ClCompile Include="StringUtilTest.cpp" />
     <ClCompile Include="StreamLineReaderTest.cpp" />
     <ClCompile Include="TimestampSourceTest.cpp" />
     <ClCompile Include="VectorReaderTest.cpp" />
