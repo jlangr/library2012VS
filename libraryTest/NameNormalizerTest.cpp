@@ -29,8 +29,7 @@ TEST(ANameNormalizer, TrimsWhitespace)
     ASSERT_THAT(NameNormalizer::Normalize("  Big Boi   "), Eq("Boi, Big"));
 }
 
-/*
-TEST(ANameNormalizer, InitializesMiddleName)
+TEST(ANameNormalizer, ReplacesMiddleNameWithInitial)
 {
     ASSERT_THAT(NameNormalizer::Normalize("Henry David Thoreau"), Eq("Thoreau, Henry D."));
 }
@@ -52,7 +51,5 @@ TEST(ANameNormalizer, AppendsSuffixesToEnd)
 
 TEST(ANameNormalizer, ThrowsWhenNameContainsTwoCommas)
 {
-    // TODO
-    NameNormalizer::Normalize("Thurston, Howell, III");
+    ASSERT_THROW(NameNormalizer::Normalize("Thurston, Howell, III"), InvalidNameException);
 }
-*/

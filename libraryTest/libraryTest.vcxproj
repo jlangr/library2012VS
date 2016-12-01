@@ -85,7 +85,6 @@
   <ItemGroup>
     <ClCompile Include="BarcodeUtilTest.cpp" />
     <ClCompile Include="BookTest.cpp" />
-    <ClCompile Include="BowlingTest.cpp" />
     <ClCompile Include="BranchAccessTest.cpp" />
     <ClCompile Include="BranchServiceTest.cpp" />
     <ClCompile Include="BranchTest.cpp" />
@@ -94,7 +93,6 @@
     <ClCompile Include="HoldingBarcodeTest.cpp" />
     <ClCompile Include="HoldingServiceTest.cpp" />
     <ClCompile Include="HoldingTest.cpp" />
-    <ClCompile Include="InventoryReportTestSln.cpp" />
     <ClCompile Include="KeyedFilePersistenceTest.cpp" />
     <ClCompile Include="KeyedMemoryPersistenceTest.cpp" />
     <ClCompile Include="library.cpp" />
@@ -103,9 +101,6 @@
     <ClCompile Include="PatronServiceTest.cpp" />
     <ClCompile Include="PatronTest.cpp" />
     <ClCompile Include="PersistenceTest.cpp" />
-    <ClCompile Include="PortfolioTestSln.cpp" />
-    <ClCompile Include="ReportMailerTestSln.cpp" />
-    <ClCompile Include="RomanConverterTest.cpp" />
     <ClCompile Include="ScannerStateCheckinTest.cpp" />
     <ClCompile Include="ScannerStateCheckoutTest.cpp" />
     <ClCompile Include="ScannerStateInventoryTest.cpp" />

@@ -210,15 +210,6 @@
     <ClInclude Include="VectorReader.h">
       <Filter>util</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>slns</Filter>
-    </ClInclude>
-    <ClInclude Include="ReportMailerTemplateSln.h">
-      <Filter>slns</Filter>
-    </ClInclude>
-    <ClInclude Include="PortfolioSln.h">
-      <Filter>slns</Filter>
-    </ClInclude>
     <ClInclude Include="Soundex.h">
       <Filter>unrelated</Filter>
     </ClInclude>
@@ -250,9 +241,6 @@
     </Filter>
     <Filter Include="dataAccess">
       <UniqueIdentifier>{a5a3764b-cba3-46d3-92ca-cba10209bdc2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="slns">
-      <UniqueIdentifier>{7d7b6da7-df1b-4b9c-b44b-63a19f6ee9f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -22,10 +22,11 @@ namespace stringutil
     // See http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
     inline std::string trim(const std::string &s)
     {
-        //auto frontOfWhitespace = std::find_if_not(s.begin(), s.end(), std::isspace);
-        //return std::string(frontOfWhitespace,
-        //    std::find_if_not(s.rbegin(), std::string::const_reverse_iterator(frontOfWhitespace), std::isspace).base());
-        auto  wsfront = std::find_if_not(s.begin(), s.end(), [](int c) {return std::isspace(c); });
-        return std::string(wsfront, std::find_if_not(s.rbegin(), std::string::const_reverse_iterator(wsfront), [](int c) {return std::isspace(c); }).base());
+        auto frontOfWhitespace = std::find_if_not(s.begin(), s.end(), std::isspace);
+        return std::string(
+            frontOfWhitespace,
+            std::find_if_not(
+                s.rbegin(),
+                std::string::const_reverse_iterator(frontOfWhitespace), std::isspace).base());
     }
 }

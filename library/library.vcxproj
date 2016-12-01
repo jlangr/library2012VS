@@ -117,7 +117,6 @@
     <ClInclude Include="DisplayListener.h" />
     <ClInclude Include="Endpoint.h" />
     <ClInclude Include="EndpointValidator.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="Holding.h" />
     <ClInclude Include="HoldingBarcode.h" />
     <ClInclude Include="HoldingService.h" />
@@ -134,9 +133,7 @@
     <ClInclude Include="PatronNotFoundException.h" />
     <ClInclude Include="PatronService.h" />
     <ClInclude Include="Persistence.h" />
-    <ClInclude Include="PortfolioSln.h" />
     <ClInclude Include="Report.h" />
-    <ClInclude Include="ReportMailerTemplateSln.h" />
     <ClInclude Include="Scanner.h" />
     <ClInclude Include="ScannerState.h" />
     <ClInclude Include="ScannerStateCheckin.h" />
