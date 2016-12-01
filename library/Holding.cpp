@@ -22,7 +22,7 @@ Holding::Holding(const string& barcode)
     {
         throw InvalidBarcodeException();
     }
-    vector<string> barcodeParts = StringUtil::split(barcode, ':');
+    vector<string> barcodeParts = stringutil::split(barcode, ':');
     string classification = barcodeParts[0];
     mCopyNumber = atoi(barcodeParts[1].c_str());
     mClassification = classification;

@@ -98,6 +98,9 @@
     <ClCompile Include="StringUtilTest.cpp">
       <Filter>util</Filter>
     </ClCompile>
+    <ClCompile Include="NameNormalizerTest.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ASSERT_CURRENT_STATE.h">

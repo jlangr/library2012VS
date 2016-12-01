@@ -98,6 +98,7 @@
     <ClCompile Include="KeyedFilePersistenceTest.cpp" />
     <ClCompile Include="KeyedMemoryPersistenceTest.cpp" />
     <ClCompile Include="library.cpp" />
+    <ClCompile Include="NameNormalizerTest.cpp" />
     <ClCompile Include="PatronAccessTest.cpp" />
     <ClCompile Include="PatronServiceTest.cpp" />
     <ClCompile Include="PatronTest.cpp" />

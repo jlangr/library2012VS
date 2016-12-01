@@ -82,7 +82,7 @@
     <ClCompile Include="ReportMailer.h">
       <Filter>reporting</Filter>
     </ClCompile>
-    <ClCompile Include="StringUtil.cpp">
+    <ClCompile Include="NameNormalizer.cpp">
       <Filter>util</Filter>
     </ClCompile>
   </ItemGroup>
@@ -223,6 +223,9 @@
       <Filter>unrelated</Filter>
     </ClInclude>
     <ClInclude Include="StringUtil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="NameNormalizer.h">
       <Filter>util</Filter>
     </ClInclude>
   </ItemGroup>

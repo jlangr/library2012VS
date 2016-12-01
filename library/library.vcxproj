@@ -88,6 +88,7 @@
     <ClCompile Include="InventoryReport.cpp" />
     <ClCompile Include="MailDestination.cpp" />
     <ClCompile Include="MailMessage.cpp" />
+    <ClCompile Include="NameNormalizer.cpp" />
     <ClCompile Include="Patron.cpp" />
     <ClCompile Include="PatronAccess.cpp" />
     <ClCompile Include="PatronService.cpp" />
@@ -100,7 +101,6 @@
     <ClCompile Include="ScannerStateWaiting.cpp" />
     <ClCompile Include="Soundex.cpp" />
     <ClCompile Include="StreamLineReader.cpp" />
-    <ClCompile Include="StringUtil.cpp" />
     <ClCompile Include="TimestampSource.cpp" />
     <ClCompile Include="Transport.cpp" />
   </ItemGroup>
@@ -127,6 +127,7 @@
     <ClInclude Include="KeyedMemoryPersistence.h" />
     <ClInclude Include="MailDestination.h" />
     <ClInclude Include="MailMessage.h" />
+    <ClInclude Include="NameNormalizer.h" />
     <ClInclude Include="NCC1701ADisplay.h" />
     <ClInclude Include="Patron.h" />
     <ClInclude Include="PatronAccess.h" />

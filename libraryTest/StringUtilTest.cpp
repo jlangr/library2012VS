@@ -6,33 +6,59 @@
 
 using namespace testing;
 using namespace std;
+using namespace stringutil;
 
-TEST(StringUtilTest, SplitsStringIntoTwo)
+TEST(StringUtil_Split, ReturnsVectorOfStrings)
 {
-    ASSERT_THAT(StringUtil::split("abc-def", '-'), Eq(vector<string>{ "abc", "def" }));
+    ASSERT_THAT(split("abc-def", '-'), Eq(vector<string>{ "abc", "def" }));
 }
 
-TEST(StringUtilTest, SupportsAlternateDelimiters)
+TEST(StringUtil_Split, SupportsAlternateDelimiters)
 {
-    ASSERT_THAT(StringUtil::split("abc def", ' '), Eq(vector<string>{ "abc", "def" }));
+    ASSERT_THAT(split("abc def", ' '), Eq(vector<string>{ "abc", "def" }));
 }
 
-TEST(StringUtilTest, SplitsIntoSeveralTokens)
+TEST(StringUtil_Split, SupportsMultipleSplits)
 {
-    ASSERT_THAT(StringUtil::split("abc def ghi", ' '), Eq(vector<string>{ "abc", "def", "ghi" }));
+    ASSERT_THAT(split("abc def ghi", ' '), Eq(vector<string>{ "abc", "def", "ghi" }));
 }
 
-TEST(StringUtilTest, HandlesDelimiterAtEnd)
+TEST(StringUtil_Split, HandlesDelimiterAtEnd)
 {
-    ASSERT_THAT(StringUtil::split("abc:def:", ':'), Eq(vector<string>{ "abc", "def", "" }));
+    ASSERT_THAT(split("abc:def:", ':'), Eq(vector<string>{ "abc", "def", "" }));
 }
 
-TEST(StringUtilTest, NoDelimiterReturnsUnchangedString)
+TEST(StringUtil_Split, ReturnsUnchangedStringWhenNoDelimiterExists)
 {
-    ASSERT_THAT(StringUtil::split("abcdef", ':'), Eq(vector<string>{ "abcdef" }));
+    ASSERT_THAT(split("abcdef", ':'), Eq(vector<string>{ "abcdef" }));
 }
 
-TEST(StringUtilTest, EmptyStringReturnsEmptyString)
+TEST(StringUtil_Split, ReturnsEmptyStringWhenInputEmpty)
 {
-    ASSERT_THAT(StringUtil::split("", ':'), Eq(vector<string>{ "" }));
+    ASSERT_THAT(split("", ':'), Eq(vector<string>{ "" }));
+}
+
+TEST(StringUtil_Trim, EliminatesFrontWhitespace)
+{
+    ASSERT_THAT(stringutil::trim(" \t\n\r abc"), Eq("abc"));
+}
+
+TEST(StringUtil_Trim, EliminatesTrailingWhitespace)
+{
+    ASSERT_THAT(trim("abc \n\t\r "), Eq("abc"));
+}
+
+TEST(StringUtil_Trim, EliminatesWhitespaceFromBothEnds)
+{
+    ASSERT_THAT(trim("   abc  def  "), Eq("abc  def"));
+}
+
+TEST(StringUtil_Trim, SupportsTheDegenerateCase)
+{
+    ASSERT_THAT(trim(""), Eq(""));
+}
+
+TEST(StringUtil_Trim, LeavesAlreadyTrimmedStringsUntouched)
+{
+    ASSERT_THAT(trim(""), Eq(""));
 }
