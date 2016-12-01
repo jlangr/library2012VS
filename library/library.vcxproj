@@ -88,7 +88,6 @@
     <ClCompile Include="InventoryReport.cpp" />
     <ClCompile Include="MailDestination.cpp" />
     <ClCompile Include="MailMessage.cpp" />
-    <ClCompile Include="NameNormalizer.cpp" />
     <ClCompile Include="Patron.cpp" />
     <ClCompile Include="PatronAccess.cpp" />
     <ClCompile Include="PatronService.cpp" />

@@ -82,9 +82,6 @@
     <ClCompile Include="ReportMailer.h">
       <Filter>reporting</Filter>
     </ClCompile>
-    <ClCompile Include="NameNormalizer.cpp">
-      <Filter>util</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h">
