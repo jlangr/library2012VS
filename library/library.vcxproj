@@ -81,6 +81,7 @@
     <ClCompile Include="BranchService.cpp" />
     <ClCompile Include="Catalog.cpp" />
     <ClCompile Include="ClassificationService.cpp" />
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Endpoint.cpp" />
     <ClCompile Include="EndpointValidator.cpp" />
     <ClCompile Include="Holding.cpp" />
@@ -88,9 +89,11 @@
     <ClCompile Include="InventoryReport.cpp" />
     <ClCompile Include="MailDestination.cpp" />
     <ClCompile Include="MailMessage.cpp" />
+    <ClCompile Include="Movie.cpp" />
     <ClCompile Include="Patron.cpp" />
     <ClCompile Include="PatronAccess.cpp" />
     <ClCompile Include="PatronService.cpp" />
+    <ClCompile Include="Rental.cpp" />
     <ClCompile Include="ReportMailer.h" />
     <ClCompile Include="Scanner.cpp" />
     <ClCompile Include="ScannerState.cpp" />
@@ -113,6 +116,7 @@
     <ClInclude Include="ClassificationData.h" />
     <ClInclude Include="ClassificationService.h" />
     <ClInclude Include="CreditVerifier.h" />
+    <ClInclude Include="Customer.h" />
     <ClInclude Include="DisplayListener.h" />
     <ClInclude Include="Endpoint.h" />
     <ClInclude Include="EndpointValidator.h" />
@@ -125,6 +129,7 @@
     <ClInclude Include="KeyedMemoryPersistence.h" />
     <ClInclude Include="MailDestination.h" />
     <ClInclude Include="MailMessage.h" />
+    <ClInclude Include="Movie.h" />
     <ClInclude Include="NameNormalizer.h" />
     <ClInclude Include="NCC1701ADisplay.h" />
     <ClInclude Include="Patron.h" />
@@ -132,6 +137,7 @@
     <ClInclude Include="PatronNotFoundException.h" />
     <ClInclude Include="PatronService.h" />
     <ClInclude Include="Persistence.h" />
+    <ClInclude Include="Rental.h" />
     <ClInclude Include="Report.h" />
     <ClInclude Include="Scanner.h" />
     <ClInclude Include="ScannerState.h" />

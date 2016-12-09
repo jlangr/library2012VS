@@ -82,6 +82,15 @@
     <ClCompile Include="ReportMailer.h">
       <Filter>reporting</Filter>
     </ClCompile>
+    <ClCompile Include="Customer.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="Rental.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="Movie.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h">
@@ -216,6 +225,15 @@
     <ClInclude Include="NameNormalizer.h">
       <Filter>util</Filter>
     </ClInclude>
+    <ClInclude Include="Customer.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="Rental.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="Movie.h">
+      <Filter>video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="domain">
@@ -238,6 +256,9 @@
     </Filter>
     <Filter Include="dataAccess">
       <UniqueIdentifier>{a5a3764b-cba3-46d3-92ca-cba10209bdc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="video">
+      <UniqueIdentifier>{78f85bd7-add1-4e16-9814-d2396b51a596}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
