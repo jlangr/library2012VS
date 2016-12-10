@@ -2,13 +2,13 @@
 *.obj
 *.exe
 *.dll
-*.lib
 *.pdb
 *.ilk
 *.log
 *.tlog
 *.vcxproj.user
 **/*.VC.*db
-**/Debug/*
+library/**/Debug/*
+libraryTest/**/Debug/*
 **/Backup/*
 test.dat
