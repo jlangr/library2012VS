@@ -5,11 +5,11 @@
 using namespace std;
 
 MailMessage::MailMessage(const std::string& subject,
-		const std::string& content,
-        const std::string& from)
-		: mSubject(subject)
-		, mContent(content)
-        , mFrom(from)
+    const std::string& content,
+    const std::string& from)
+    : mSubject(subject)
+    , mContent(content)
+    , mFrom(from)
 {
 }
 

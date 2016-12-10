@@ -4,8 +4,6 @@
 #include "Persistence.h"
 #include "KeyedMemoryPersistence.h"
 
-#include "boost/shared_ptr.hpp"
-
 #include <vector>
 #include <algorithm>
 #include <functional>
@@ -13,7 +11,6 @@
 #include <fstream>
 
 using namespace std;
-using namespace boost;
 
 BranchAccess::BranchAccess(shared_ptr<Persistence<Branch>> persister)
     : mPersister(persister)
@@ -52,7 +49,7 @@ bool BranchAccess::Find(Branch& branch) const
         return false;
     }
     branch = *retrieved;
-	return true;
+    return true;
 }
 
 int BranchAccess::Size() const

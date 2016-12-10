@@ -12,7 +12,7 @@ TEST(BranchTest, CreateInitializesMembers)
 {
     Branch branch("5", "south");
 
-	ASSERT_THAT(branch.Name(), Eq("south"));
+    ASSERT_THAT(branch.Name(), Eq("south"));
     ASSERT_THAT(branch.Id(), Eq("5"));
 }
 

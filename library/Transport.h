@@ -5,8 +5,8 @@
 class Transport
 {
 public:
-	Transport(void);
-	~Transport(void);
+    Transport(void);
+    ~Transport(void);
 
-	static void Send(const MailMessage&);
+    static void Send(const MailMessage&);
 };

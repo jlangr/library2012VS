@@ -16,16 +16,21 @@ public:
     const static string SOFT_CONSONANTS;
     const static string VOWELS;
 
-    Soundex(void) 
+    Soundex(void)
     {
         InitializeConsonantToDigitTable();
     }
     virtual ~Soundex(void) {}
 
+    string Convert(const string& name)
+    {
+        return "";
+    }
+
     // +++ do not change any of these helper methods +++
     char Digit(char consonant) const
     {
-        map<char,char>::const_iterator it = consonantIndices.find(consonant);
+        map<char, char>::const_iterator it = consonantIndices.find(consonant);
         if (it == consonantIndices.end())
             return '0';
         return it->second;
@@ -47,43 +52,9 @@ public:
     }
     // ^^^ do not change any of the above helper methods ^^^
 
-    void AppendFirstLetter(stringstream& stream, const string& text) const
-    {
-        stream << text[0];
-    }
-
-    void AppendDigit(stringstream& stream, char letter) const
-    {
-        stream << Digit(letter);
-    }
-
-    void PadWithZeros(stringstream& stream) const
-    {
-        int zeros = MAX_LENGTH - stream.str().length();
-        stream << string(zeros, '0');
-    }
-
-    char Last(stringstream& stream) const
-    {
-        unsigned int length = stream.str().length();
-        return stream.str()[length - 1];
-    }
-
-    bool IsDuplicateHardSound(stringstream& stream, char letter) const
-    {
-        if (stream.str().length() < 2)
-            return false;
-        return Last(stream) == Digit(letter);
-    }
-
-    string Convert(const string& text) const
-    {
-        return string(1, text[0]) + "000";
-    }
 
 private:
-
-    map<char,char> consonantIndices;
+    map<char, char> consonantIndices;
 
     void InitializeConsonantToDigitTable()
     {

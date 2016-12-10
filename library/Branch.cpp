@@ -10,9 +10,9 @@ using namespace std;
 
 Branch Branch::CHECKED_OUT("99", "-checked out-");
 
-Branch::Branch() 
+Branch::Branch()
     : mId("")
-    , mName("") 
+    , mName("")
 {
 }
 
@@ -43,9 +43,9 @@ void Branch::Load(istream& input)
 
 void Branch::WriteOn(ostream& output)
 {
-    output 
+    output
         << mId << endl
-        << mName << endl 
+        << mName << endl
         << mAddress << endl;
 }
 
@@ -56,25 +56,25 @@ std::string Branch::Id() const
 
 std::string Branch::Name() const
 {
-	return mName;
+    return mName;
 }
 
 std::string Branch::Address() const
 {
-	return mAddress;
+    return mAddress;
 }
 
 void Branch::SetAddress(const std::string& address)
 {
-	mAddress = address;
+    mAddress = address;
 }
 
-bool Branch::operator==(const Branch& other) const 
+bool Branch::operator==(const Branch& other) const
 {
-	return mId == other.mId;
+    return mId == other.mId;
 }
 
-bool Branch::operator!=(const Branch& other) const 
+bool Branch::operator!=(const Branch& other) const
 {
-	return !(*this == other);
+    return !(*this == other);
 }

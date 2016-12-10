@@ -28,18 +28,17 @@ private:
     std::string mMessage;
 };
 
-template <typename ENDPOINT_VALIDATOR>
-class ReportMailerImpl
+class ReportMailer
 {
 public:
-    ReportMailerImpl(std::vector<MailDestination> destinations)
+    ReportMailer(std::vector<MailDestination> destinations)
         : mDestinations(destinations)
     {
         if (mDestinations.empty())
         {
             throw ReportMailerException("destinations required");
         }
-        ENDPOINT_VALIDATOR validator;
+        EndpointValidator validator;
         for (std::vector<MailDestination>::iterator it = mDestinations.begin();
             it != mDestinations.end();
             it++)
@@ -53,9 +52,9 @@ public:
         }
     }
 
-	virtual ~ReportMailerImpl() 
+    virtual ~ReportMailer() 
     {
-	}
+    }
 
     void MailReport(Report* report) 
     {
@@ -66,21 +65,11 @@ public:
             MailDestination destination = *it;
             std::string toAddress = destination.Address();
             MailMessage message = ConstructMailMessage(toAddress, report);
-            Send(message);
+            MailDestination::Send(message);
         }
     }
 
-    virtual void Send(MailMessage& message)
-    {
-        MailDestination::Send(message);
-    }
-    
     MailMessage ConstructMailMessage(const std::string& toAddress, Report* report) const
-    {
-        return ReportMailer::ConstructMailMessageTo(toAddress, report);
-    }
-
-    static MailMessage ConstructMailMessageTo(const std::string& toAddress, Report* report)
     {
         std::string content = report->Text();
         std::string subject = report->Name();
@@ -89,7 +78,7 @@ public:
             subject, 
             content, 
             "Joe@example.com");
-        
+
         message.AddRecipient(toAddress);
 
         return message;
@@ -98,5 +87,3 @@ public:
 private:
     std::vector<MailDestination> mDestinations;
 };
-
-typedef ReportMailerImpl<EndpointValidator> ReportMailer;

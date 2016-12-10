@@ -28,54 +28,26 @@ public:
 
 // Soundex cases verified by http://stevemorse.org/census/soundex.html
 
-TEST_F(SoundexTest, AppendsThreeTrailingZerosIfSingleLetter)
+TEST_F(SoundexTest, DISABLED_PadsSingleLetterWithZeros)
 {
     ASSERT_THAT(soundex.Convert("A"), Eq("A000"));
 }
 
-TEST_F(SoundexTest, RetainsFirstLetter)
+TEST_F(SoundexTest, DISABLED_RetainsFirstLetter)
 {
     ASSERT_THAT(soundex.Convert("B"), Eq("B000"));
-    ASSERT_THAT(soundex.Convert("C"), Eq("C000"));
 }
 
 TEST_F(SoundexTest, DISABLED_ConvertsHardSoundsUsingLookupTable)
 {
     // should we really have more than one case per test?
-    //ASSERT_THAT(soundex.Convert("Abcd"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Afgt"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Apjd"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Avkd"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Abqd"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Absd"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Abxd"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Abzd"), Eq("A123000"));
-    //ASSERT_THAT(soundex.Convert("Almr"), Eq("A456000"));
-    //ASSERT_THAT(soundex.Convert("Alnr"), Eq("A456000"));
-    ASSERT_THAT(soundex.Convert("Abcd"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Afgt"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Apjd"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Avkd"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Abqd"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Absd"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Abxd"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Abzd"), Eq("A123"));
-    ASSERT_THAT(soundex.Convert("Almr"), Eq("A456"));
-    ASSERT_THAT(soundex.Convert("Alnr"), Eq("A456"));
-
-    // Note that these specifications are temporarily incorrect--
-    // they assume there is no length restriction on the encoding.
-    // That's a perfectly acceptable way to proceed.
-    // You will need to return to this test soon to update the
-    // spec when a new constraint on length emerges.
+    ASSERT_THAT(soundex.Convert("Ab"), Eq("A100"));
+    //ASSERT_THAT(soundex.Convert("Am"), Eq("A500"));
 }
 
-TEST_F(SoundexTest, DISABLED_IgnoresSoftSounds)
+TEST_F(SoundexTest, DISABLED_PadsWithZerosToEnsureThreeDigits)
 {
-    // should we really have more than one assert per test?
-    ASSERT_THAT(soundex.Convert("Aaei"), Eq("A000"));
-    ASSERT_THAT(soundex.Convert("Aouy"), Eq("A000"));
-    ASSERT_THAT(soundex.Convert("Ahwe"), Eq("A000"));
+    ASSERT_THAT(soundex.Convert("Af"), Eq("A100"));
 }
 
 TEST_F(SoundexTest, DISABLED_DoesNotAppendZerosIfAlreadyFourCharacters)
@@ -85,14 +57,17 @@ TEST_F(SoundexTest, DISABLED_DoesNotAppendZerosIfAlreadyFourCharacters)
     ASSERT_THAT(soundex.Convert("Arml"), Eq("A654"));
 }
 
-TEST_F(SoundexTest, DISABLED_StopsAfterFourCharacters)
+TEST_F(SoundexTest, DISABLED_LimitsLengthToFourCharacters)
 {
     ASSERT_THAT(soundex.Convert("Armlrml"), Eq("A654"));
 }
 
-TEST_F(SoundexTest, DISABLED_PadsWithZerosToEnsureThreeDigits)
+TEST_F(SoundexTest, DISABLED_IgnoresSoftSounds)
 {
-    ASSERT_THAT(soundex.Convert("Af"), Eq("A100"));
+    // should we really have more than one assert per test?
+    ASSERT_THAT(soundex.Convert("Aaei"), Eq("A000"));
+    //ASSERT_THAT(soundex.Convert("Aouy"), Eq("A000"));
+    //ASSERT_THAT(soundex.Convert("Ahwe"), Eq("A000"));
 }
 
 TEST_F(SoundexTest, DISABLED_IgnoresDuplicateHardSounds)
