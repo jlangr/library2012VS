@@ -62,16 +62,31 @@ TEST_F(HoldingTest, CanExtractClassificationWhenCreatedWithBarcode)
 
 TEST_F(HoldingTest, CanExtractCopyNumberWhenCreatedWithBarcode)
 {
-    Holding holding(Holding::ConstructBarcode("A234", 5));
+	try {
+		Holding h(Holding::ConstructBarcode("A234", 5));
 
-    ASSERT_THAT(holding.CopyNumber(), Eq(5));
+		ASSERT_THAT(h.CopyNumber(), Eq(5));
+	}
+	catch (...)
+	{
+		FAIL();
+		cout << "failed test avail" << endl;
+	}
 }
 
 TEST_F(HoldingTest, IsNotAvailableWhenCreated)
 {
-    Holding holding(Holding::ConstructBarcode("A", 1));
+	cout << "vavail test" << endl;
+	try {
+		Holding holding(Holding::ConstructBarcode("A", 1));
 
-    ASSERT_THAT(holding.IsAvailable(), Eq(false));
+		ASSERT_THAT(holding.IsAvailable(), Eq(false));
+	}
+	catch (...)
+	{
+		FAIL();
+		cout << "failed test avail" << endl;
+	}
 }
 
 TEST_F(HoldingTest, CanSpecifyClassificationSeparatelyWhenCreated)
@@ -95,12 +110,15 @@ TEST_F(HoldingTest, IsNotAvailableWhenCreatedWithSeparateClassificationAndCopy)
     ASSERT_THAT(holding.IsAvailable(), Eq(false));
 }
 
+/*
+* assignment copy all members
+*/
 TEST_F(HoldingTest, AssignmentCopiesAllMembers)
 {
+	ASSERT_THAT(holding, NotNull());
+	// transfer to a different branch
     holding->Transfer(EAST_BRANCH);
-
     Holding newHolding = *holding;
-
     ASSERT_THAT(newHolding.Classification(), Eq(THE_TRIAL_CLASSIFICATION));
     ASSERT_THAT(newHolding.CopyNumber(), Eq(holding->CopyNumber()));
     ASSERT_THAT(IsAvailableAt(&newHolding, EAST_BRANCH), Eq(true));
@@ -116,9 +134,7 @@ TEST_F(HoldingTest, TransferMakesHoldingAvailableAtBranch)
 TEST_F(HoldingTest, BarCodeCombinesClassificationAndCopyNumber)
 {
     Holding holding(THE_TRIAL_CLASSIFICATION, 5);
-
     string barcode = holding.Barcode();
-
     ASSERT_THAT(barcode, Eq(THE_TRIAL_CLASSIFICATION + ":5"));
 }
 
@@ -170,38 +186,14 @@ TEST_F(HoldingTest, IsNotLessThanWhenBarcodesAreEqual)
 TEST_F(HoldingTest, ck)
 {
     holding->Transfer(EAST_BRANCH);
-    date checkoutOn(2007, Mar, 1);
-    holding->CheckOut(checkoutOn);
+    date ckon(2007, Mar, 1);
+    holding->CheckOut(ckon);
     ASSERT_THAT(holding->IsAvailable(), Eq(false));
-    ASSERT_THAT(holding->LastCheckedOutOn(), Eq(checkoutOn));
+    ASSERT_THAT(holding->LastCheckedOutOn(), Eq(ckon));
     // verify late
-    date_duration daysCheckedOut(Book::BOOK_CHECKOUT_PERIOD);
-    date expectedDue = checkoutOn + daysCheckedOut;
+    date_duration daysCheckedOut(Book::BOOK_CHECKOUT_PERIOD + 0);
+    date expectedDue = ckon + daysCheckedOut;
     ASSERT_THAT(holding->DueDate(), Eq(expectedDue));
-}
-
-TEST_F(HoldingTest, UnavailableOnCheckout)
-{
-    MakeAvailableAtABranch(holding);
-
-    holding->CheckOut(ARBITRARY_DATE);
-
-    ASSERT_THAT(holding->IsAvailable(), Eq(false));
-}
-
-TEST_F(HoldingTest, UpdatesCheckoutDateOnCheckout)
-{
-    MakeAvailableAtABranch(holding);
-    holding->CheckOut(ARBITRARY_DATE);
-    ASSERT_THAT(holding->LastCheckedOutOn(), Eq(ARBITRARY_DATE));
-}
-
-TEST_F(HoldingTest, UpdatesDateDueOnCheckout)
-{
-    MakeAvailableAtABranch(holding);
-    holding->CheckOut(ARBITRARY_DATE);
-    ASSERT_THAT(holding->DueDate(),
-        Eq(ARBITRARY_DATE + date_duration(Book::BOOK_CHECKOUT_PERIOD)));
 }
 
 TEST_F(HoldingTest, Ckin)
@@ -215,18 +207,7 @@ TEST_F(HoldingTest, Ckin)
     ASSERT_THAT(IsAvailableAt(holding, branch2), Eq(true));
 }
 
-TEST_F(HoldingTest, CheckinMakesBookAvailableAtAnotherBranch)
-{
-    holding->Transfer(EAST_BRANCH);
-    holding->CheckOut(ARBITRARY_DATE);
-
-    holding->CheckIn(
-        ARBITRARY_DATE + date_duration(1), WEST_BRANCH);
-
-    ASSERT_THAT(IsAvailableAt(holding, WEST_BRANCH), Eq(true));
-}
-
-TEST_F(HoldingTest, DateDueForMovies)
+TEST_F(HoldingTest, Due)
 {
     Holding holdingA(SEVEN_CLASSIFICATION, 1);
     holdingA.Transfer(EAST_BRANCH);
@@ -240,9 +221,7 @@ TEST_F(HoldingTest, MoviesDueCheckoutPeriodDaysAfterCheckout)
 {
     Holding movie(SEVEN_CLASSIFICATION, 1);
     MakeAvailableAtABranch(&movie);
-
     movie.CheckOut(ARBITRARY_DATE);
-
     ASSERT_THAT(movie.DueDate(),
         Eq(ARBITRARY_DATE + date_duration(Book::MOVIE_CHECKOUT_PERIOD)));
 }
