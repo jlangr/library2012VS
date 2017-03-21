@@ -53,11 +53,6 @@ TEST(StringUtil_Trim, EliminatesWhitespaceFromBothEnds)
     ASSERT_THAT(trim("   abc  def  "), Eq("abc  def"));
 }
 
-TEST(StringUtil_Trim, SupportsTheDegenerateCase)
-{
-    ASSERT_THAT(trim(""), Eq(""));
-}
-
 TEST(StringUtil_Trim, LeavesAlreadyTrimmedStringsUntouched)
 {
     ASSERT_THAT(trim(""), Eq(""));
