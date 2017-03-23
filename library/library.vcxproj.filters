@@ -243,6 +243,15 @@
     <ClInclude Include="PriceCode.h">
       <Filter>video</Filter>
     </ClInclude>
+    <ClInclude Include="RegularPriceStrategy.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildrensPriceStrategy.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="NewReleasePriceStrategy.h">
+      <Filter>video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="domain">

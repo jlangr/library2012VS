@@ -1,11 +1,18 @@
-#include "Movie.h"
 #include <string>
+
+#include "Movie.h"
 #include "PriceCode.h"
+#include "PriceStrategy.h"
+#include "RegularPriceStrategy.h"
+#include "ChildrensPriceStrategy.h"
+#include "NewReleasePriceStrategy.h"
+
+using namespace std;
 
 Movie::Movie(const std::string& title, int priceCode)
 	: mTitle(title)
-	, mPriceCode(priceCode)
 {
+	setPriceCode(priceCode);
 }
 
 Movie::~Movie()
@@ -14,26 +21,7 @@ Movie::~Movie()
 
 double Movie::Fee(int daysRented) const
 {
-	auto fee{ 0.0 };
-	switch (priceCode()) {
-
-	case PriceCode::REGULAR:
-		fee += 2;
-		if (daysRented > 2)
-			fee += (daysRented - 2) * 1.5;
-		break;
-
-	case PriceCode::NEW_RELEASE:
-		fee += daysRented * 3;
-		break;
-
-	case PriceCode::CHILDRENS:
-		fee += 1.5;
-		if (daysRented > 2)
-			fee += (daysRented - 2) * 1.5;
-		break;
-	}
-	return fee;
+	return mPriceStrategy->Fee(daysRented);
 }
 
 std::string Movie::title() const
@@ -43,10 +31,21 @@ std::string Movie::title() const
 
 int Movie::priceCode() const
 {
-	return mPriceCode;
+	return mPriceStrategy->PriceCode();
 }
 
 void Movie::setPriceCode(int priceCode)
 {
-	mPriceCode = priceCode;
+	switch (priceCode)
+	{
+	case PriceCode::REGULAR:
+		mPriceStrategy = make_shared<RegularPriceStrategy>();
+		break;
+	case PriceCode::NEW_RELEASE:
+		mPriceStrategy = make_shared<NewReleasePriceStrategy>();
+		break;
+	case PriceCode::CHILDRENS:
+		mPriceStrategy = make_shared<ChildrensPriceStrategy>();
+		break;
+	}
 }

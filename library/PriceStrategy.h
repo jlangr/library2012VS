@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PriceCode.h"
+
 class PriceStrategy
 {
 public:
@@ -9,7 +11,14 @@ public:
 	{
 	}
 
-	~PriceStrategy() {}
+	virtual ~PriceStrategy() {}
+
+	virtual double Fee(int daysRented) const = 0;
+
+	int PriceCode() const
+	{
+		return mPriceCode;
+	}
 
 private:
 	int mPriceCode;

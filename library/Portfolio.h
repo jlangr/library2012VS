@@ -1,27 +1,77 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
+
+using namespace std;
 
 class Portfolio
 {
 public:
-	bool IsEmpty() const 
+	unsigned int Size() const
 	{
-		return _isEmpty;
+		return _holdings.size();
 	}
 
-	void Purchase(const std::string& symbol, unsigned int shares)
+	bool IsEmpty() const
 	{
-		_shares = shares;
-		_isEmpty = false;
+		return _holdings.empty();
 	}
 
-	unsigned int Shares(const std::string& symbol)
+	void Purchase(const string& symbol, unsigned int shares)
 	{
-		return _shares;
+		ThrowOnPurchaseOfZeroShares(shares);
+		Add(symbol, shares);
+	}
+
+	unsigned int Shares(const string& symbol) const
+	{
+		return FindWithDefault(_holdings, symbol, 0);
+	}
+
+	void Sell(const string& symbol, unsigned int shares)
+	{
+		ThrowWhenSellingTooMany(symbol, shares);
+		Add(symbol, -1 * shares);
+		RemoveIfNoSharesLeft(symbol);
 	}
 
 private:
-	unsigned int _shares{ 0 };
-	bool _isEmpty{ true };
+	void Add(const string& symbol, int shares)
+	{
+		_holdings[symbol] = Shares(symbol) + shares;
+	}
+
+	void RemoveIfNoSharesLeft(const string& symbol)
+	{
+		if (0 == Shares(symbol))
+			_holdings.erase(symbol);
+	}
+
+	void ThrowWhenSellingTooMany(const string& symbol, unsigned int shares) const
+	{
+		if (shares > Shares(symbol))
+			throw exception();
+	}
+
+	void ThrowOnPurchaseOfZeroShares(unsigned int shares) const
+	{
+		if (0 == shares)
+			throw exception();
+	}
+
+	// TODO this belongs elsewhere
+	template<typename T>
+	const typename T::mapped_type& FindWithDefault(
+		const T& m,
+		const typename T::key_type& key,
+		const typename T::mapped_type& defaultValue) const
+	{
+		typename T::const_iterator it = m.find(key);
+		if (it == m.end())
+			return defaultValue;
+		return it->second;
+	}
+
+	unordered_map<string, unsigned int> _holdings;
 };

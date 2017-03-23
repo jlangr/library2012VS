@@ -113,6 +113,7 @@
     <ClInclude Include="BranchAccess.h" />
     <ClInclude Include="BranchService.h" />
     <ClInclude Include="Catalog.h" />
+    <ClInclude Include="ChildrensPriceStrategy.h" />
     <ClInclude Include="ClassificationData.h" />
     <ClInclude Include="ClassificationService.h" />
     <ClInclude Include="CreditVerifier.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="Movie.h" />
     <ClInclude Include="NameNormalizer.h" />
     <ClInclude Include="NCC1701ADisplay.h" />
+    <ClInclude Include="NewReleasePriceStrategy.h" />
     <ClInclude Include="Patron.h" />
     <ClInclude Include="PatronAccess.h" />
     <ClInclude Include="PatronNotFoundException.h" />
@@ -140,6 +142,7 @@
     <ClInclude Include="Portfolio.h" />
     <ClInclude Include="PriceCode.h" />
     <ClInclude Include="PriceStrategy.h" />
+    <ClInclude Include="RegularPriceStrategy.h" />
     <ClInclude Include="Rental.h" />
     <ClInclude Include="Report.h" />
     <ClInclude Include="Scanner.h" />

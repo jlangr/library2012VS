@@ -2,6 +2,8 @@
 
 #include <string>
 #include <memory>
+
+#include "PriceStrategy.h"
 #include "PriceCode.h"
 
 class Movie
@@ -16,5 +18,6 @@ public:
 
 private:
 	std::string mTitle;
-	int mPriceCode;
+	// unique_ptr can't be copied?...
+	std::shared_ptr<PriceStrategy> mPriceStrategy;
 };
