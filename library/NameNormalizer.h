@@ -16,7 +16,7 @@ public:
 
     ~NormalizedName() {}
 
-    std::string AsString()
+    std::string AsString() const
     {
         return "wha?";
     }
