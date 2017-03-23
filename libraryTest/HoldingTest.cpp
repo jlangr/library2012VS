@@ -13,6 +13,34 @@ using namespace ClassificationData;
 using namespace std;
 using namespace testing;
 
+class ACheckedInHolding : public Test
+{
+public:
+    Holding* holding;
+    static const date ARBITRARY_DATE;
+    virtual void SetUp()
+    {
+        holding = new Holding(THE_TRIAL_CLASSIFICATION, 1);
+		MakeAvailableAtABranch(holding);
+    }
+
+    virtual void TearDown()
+    {
+        delete holding;
+    }
+
+    bool IsAvailableAt(Holding* holding, Branch& branch)
+    {
+        return holding->CurrentBranch() == branch &&
+            holding->IsAvailable();
+    }
+
+    void MakeAvailableAtABranch(Holding* holding)
+    {
+        holding->Transfer(EAST_BRANCH);
+    }
+};
+
 class HoldingTest : public Test
 {
 public:
@@ -28,12 +56,6 @@ public:
         delete holding;
     }
 
-    void VerifyAvailability(const Branch& branch)
-    {
-        ASSERT_THAT(holding->CurrentBranch(), Eq(branch));
-        ASSERT_THAT(holding->IsAvailable(), Eq(branch != Branch::CHECKED_OUT));
-    }
-
     bool IsAvailableAt(Holding* holding, Branch& branch)
     {
         return holding->CurrentBranch() == branch &&
@@ -47,6 +69,7 @@ public:
 };
 
 const date HoldingTest::ARBITRARY_DATE(2013, Jan, 1);
+const date ACheckedInHolding::ARBITRARY_DATE(2018, Jan, 1);
 
 TEST_F(HoldingTest, BarcodeRequiresColon)
 {
@@ -62,31 +85,16 @@ TEST_F(HoldingTest, CanExtractClassificationWhenCreatedWithBarcode)
 
 TEST_F(HoldingTest, CanExtractCopyNumberWhenCreatedWithBarcode)
 {
-	try {
 		Holding h(Holding::ConstructBarcode("A234", 5));
 
 		ASSERT_THAT(h.CopyNumber(), Eq(5));
-	}
-	catch (...)
-	{
-		FAIL();
-		cout << "failed test avail" << endl;
-	}
 }
 
 TEST_F(HoldingTest, IsNotAvailableWhenCreated)
 {
-	cout << "vavail test" << endl;
-	try {
-		Holding holding(Holding::ConstructBarcode("A", 1));
+	Holding holding(Holding::ConstructBarcode("A", 1));
 
-		ASSERT_THAT(holding.IsAvailable(), Eq(false));
-	}
-	catch (...)
-	{
-		FAIL();
-		cout << "failed test avail" << endl;
-	}
+	ASSERT_THAT(holding.IsAvailable(), Eq(false));
 }
 
 TEST_F(HoldingTest, CanSpecifyClassificationSeparatelyWhenCreated)
@@ -115,7 +123,6 @@ TEST_F(HoldingTest, IsNotAvailableWhenCreatedWithSeparateClassificationAndCopy)
 */
 TEST_F(HoldingTest, AssignmentCopiesAllMembers)
 {
-	ASSERT_THAT(holding, NotNull());
 	// transfer to a different branch
     holding->Transfer(EAST_BRANCH);
     Holding newHolding = *holding;
@@ -183,17 +190,26 @@ TEST_F(HoldingTest, IsNotLessThanWhenBarcodesAreEqual)
     ASSERT_THAT(a < aCopy, Eq(false));
 }
 
-TEST_F(HoldingTest, ck)
+TEST_F(ACheckedInHolding, UpdatesDueDateOnCheckout)
 {
-    holding->Transfer(EAST_BRANCH);
-    date ckon(2007, Mar, 1);
-    holding->CheckOut(ckon);
+    holding->CheckOut(ARBITRARY_DATE);
+
+    ASSERT_THAT(holding->DueDate(), 
+		Eq(ARBITRARY_DATE + date_duration(Book::BOOK_CHECKOUT_PERIOD)));
+}
+
+TEST_F(ACheckedInHolding, IsNoLongerAvailableAfterCheckout)
+{
+    holding->CheckOut(ARBITRARY_DATE);
+
     ASSERT_THAT(holding->IsAvailable(), Eq(false));
-    ASSERT_THAT(holding->LastCheckedOutOn(), Eq(ckon));
-    // verify late
-    date_duration daysCheckedOut(Book::BOOK_CHECKOUT_PERIOD + 0);
-    date expectedDue = ckon + daysCheckedOut;
-    ASSERT_THAT(holding->DueDate(), Eq(expectedDue));
+}
+
+TEST_F(ACheckedInHolding, UpdatesLastCheckedOutDateWhenCheckedOut)
+{
+    holding->CheckOut(ARBITRARY_DATE);
+
+    ASSERT_THAT(holding->LastCheckedOutOn(), Eq(ARBITRARY_DATE));
 }
 
 TEST_F(HoldingTest, Ckin)

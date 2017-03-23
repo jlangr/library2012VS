@@ -5,43 +5,56 @@
 using namespace testing;
 using namespace std;
 
-constexpr char digitToRomanNumeral(int digit)
-{
-	return (digit == 1) ? 'I'
-		: (digit == 10) ? 'X'
-		: throw "?";
-}
+vector<pair<int, string>> conversions{ 
+	{ 1000, "M" },
+	{ 900, "CM" },
+	{ 500, "D" },
+	{ 400, "CD" },
+	{ 100, "C" },
+	{ 90, "XC" },
+	{ 50, "L" },
+	{ 40, "XL" },
+	{ 10, "X" }, {9, "IX"},  { 5, "V" },{4, "IV"}, { 1, "I" }
+};
 
-void convert(int digit, int& number, std::string& result)
+void decrementAndAppendCorrespondingRomanDigits(int& number, std::string& result,
+	std::pair<int, string> arabicToRoman)
 {
-	while (number >= digit) {
-		result += digitToRomanNumeral(digit);
+	auto digit = arabicToRoman.first;
+	auto romanDigit = arabicToRoman.second;
+	while (number >= digit) 
+	{
+		result += romanDigit;
 		number -= digit;
 	}
-
 }
 
-std::string convert(int number) {
+std::string decrementAndAppendCorrespondingRomanDigits(int number) {
+
 	std::string result;
-	convert(10, number, result);
-	if (!result.empty())
-		return result;
-	while (number >= 1) {
-		result += digitToRomanNumeral(1);
-		number -= 1;
-	}
+	for (auto arabicToRomanPair : conversions)
+		decrementAndAppendCorrespondingRomanDigits(number, result, arabicToRomanPair);
 	return result;
 }
 
 TEST(ARomanConverter, ConvertsSomeNumbers)
 {
-	ASSERT_THAT(convert(1), Eq("I"));
-	ASSERT_THAT(convert(2), Eq("II"));
-	ASSERT_THAT(convert(3), Eq("III"));
-	ASSERT_THAT(convert(10), Eq("X"));
-	ASSERT_THAT(convert(20), Eq("XX"));
-#if false
-	
-	ASSERT_THAT(convert(2), Eq("II"));
-#endif
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(1), Eq("I"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(2), Eq("II"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(3), Eq("III"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(4), Eq("IV"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(5), Eq("V"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(9), Eq("IX"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(10), Eq("X"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(11), Eq("XI"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(20), Eq("XX"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(40), Eq("XL"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(50), Eq("L"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(90), Eq("XC"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(100), Eq("C"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(400), Eq("CD"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(500), Eq("D"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(900), Eq("CM"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(1000), Eq("M"));
+	ASSERT_THAT(decrementAndAppendCorrespondingRomanDigits(2038), Eq("MMXXXVIII"));
 }

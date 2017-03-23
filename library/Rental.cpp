@@ -11,6 +11,11 @@ Rental::~Rental()
 {
 }
 
+double Rental::Fee() const
+{
+	return movie().Fee(daysRented());
+}
+
 int Rental::daysRented() const
 {
 	return mDaysRented;

@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="APortfolio.cpp" />
     <ClCompile Include="BarcodeUtilTest.cpp" />
     <ClCompile Include="BookTest.cpp" />
     <ClCompile Include="BranchAccessTest.cpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="PatronTest.cpp" />
     <ClCompile Include="PersistenceTest.cpp" />
     <ClCompile Include="RentalTest.cpp" />
+    <ClCompile Include="RomanConverterTest.cpp" />
     <ClCompile Include="ScannerStateCheckinTest.cpp" />
     <ClCompile Include="ScannerStateCheckoutTest.cpp" />
     <ClCompile Include="ScannerStateInventoryTest.cpp" />

@@ -95,6 +95,12 @@
     <ClCompile Include="RentalTest.cpp">
       <Filter>video</Filter>
     </ClCompile>
+    <ClCompile Include="APortfolio.cpp">
+      <Filter>unrelated</Filter>
+    </ClCompile>
+    <ClCompile Include="RomanConverterTest.cpp">
+      <Filter>unrelated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ASSERT_CURRENT_STATE.h">

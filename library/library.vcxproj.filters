@@ -234,6 +234,15 @@
     <ClInclude Include="Movie.h">
       <Filter>video</Filter>
     </ClInclude>
+    <ClInclude Include="Portfolio.h">
+      <Filter>unrelated</Filter>
+    </ClInclude>
+    <ClInclude Include="PriceStrategy.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="PriceCode.h">
+      <Filter>video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="domain">

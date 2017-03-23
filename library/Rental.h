@@ -9,6 +9,7 @@ public:
 	virtual ~Rental();
 	int daysRented() const;
 	const Movie& movie() const;
+	double Fee() const;
 
 private:
 	Movie mMovie;

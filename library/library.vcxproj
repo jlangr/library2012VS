@@ -137,6 +137,9 @@
     <ClInclude Include="PatronNotFoundException.h" />
     <ClInclude Include="PatronService.h" />
     <ClInclude Include="Persistence.h" />
+    <ClInclude Include="Portfolio.h" />
+    <ClInclude Include="PriceCode.h" />
+    <ClInclude Include="PriceStrategy.h" />
     <ClInclude Include="Rental.h" />
     <ClInclude Include="Report.h" />
     <ClInclude Include="Scanner.h" />
