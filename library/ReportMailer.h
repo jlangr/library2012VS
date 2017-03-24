@@ -69,7 +69,12 @@ public:
         }
     }
 
-    MailMessage ConstructMailMessage(const std::string& toAddress, Report* report) const
+	MailMessage ConstructMailMessage(const std::string& toAddress, Report* report) const
+	{
+		return ConstructMailMessage(toAddress, report);
+	}
+
+    static MailMessage ConstructMailMessageStatic(const std::string& toAddress, Report* report) 
     {
         std::string content = report->Text();
         std::string subject = report->Name();

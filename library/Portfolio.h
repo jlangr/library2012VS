@@ -2,12 +2,42 @@
 
 #include <string>
 #include <unordered_map>
+#include <numeric>
+
+#include "StockService.h"
 
 using namespace std;
 
 class Portfolio
 {
 public:
+	void SetStockService(StockService* service)
+	{
+		_stockService = service;
+	}
+
+	unsigned int Value() const
+	{
+		if (IsEmpty())
+			return 0;
+		//auto total{ 0 };
+		//for (auto holding : _holdings) 
+		//{
+		//	auto symbol{ holding.first };
+		//	total += _stockService->CurrentPrice(symbol) * Shares(symbol);
+		//}
+		//return total;
+
+		return accumulate(_holdings.begin(), _holdings.end(),
+			0,
+			[&](auto total, auto holding)
+		{
+		   auto symbol{ holding.first };
+		   return total + 
+			   _stockService->CurrentPrice(symbol) * Shares(symbol);
+		});
+	}
+
 	unsigned int Size() const
 	{
 		return _holdings.size();
@@ -74,4 +104,5 @@ private:
 	}
 
 	unordered_map<string, unsigned int> _holdings;
+	StockService* _stockService;
 };

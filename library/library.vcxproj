@@ -116,6 +116,7 @@
     <ClInclude Include="ChildrensPriceStrategy.h" />
     <ClInclude Include="ClassificationData.h" />
     <ClInclude Include="ClassificationService.h" />
+    <ClInclude Include="ComputerService.h" />
     <ClInclude Include="CreditVerifier.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="DisplayListener.h" />
@@ -142,9 +143,11 @@
     <ClInclude Include="Portfolio.h" />
     <ClInclude Include="PriceCode.h" />
     <ClInclude Include="PriceStrategy.h" />
+    <ClInclude Include="PrinterService.h" />
     <ClInclude Include="RegularPriceStrategy.h" />
     <ClInclude Include="Rental.h" />
     <ClInclude Include="Report.h" />
+    <ClInclude Include="ReservationService.h" />
     <ClInclude Include="Scanner.h" />
     <ClInclude Include="ScannerState.h" />
     <ClInclude Include="ScannerStateCheckin.h" />

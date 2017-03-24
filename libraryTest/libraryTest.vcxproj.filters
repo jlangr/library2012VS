@@ -101,6 +101,12 @@
     <ClCompile Include="RomanConverterTest.cpp">
       <Filter>unrelated</Filter>
     </ClCompile>
+    <ClCompile Include="AReservationService.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportMailer.cpp">
+      <Filter>reporting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ASSERT_CURRENT_STATE.h">

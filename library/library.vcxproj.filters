@@ -252,6 +252,15 @@
     <ClInclude Include="NewReleasePriceStrategy.h">
       <Filter>video</Filter>
     </ClInclude>
+    <ClInclude Include="ReservationService.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputerService.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="PrinterService.h">
+      <Filter>service</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="domain">

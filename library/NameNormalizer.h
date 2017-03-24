@@ -51,7 +51,7 @@ private:
 	string MiddleInitials()
 	{
 		stringstream s;
-		vector<std::string> middle{_nameParts.begin() + 1, _nameParts.end() - 1};
+		vector<string> middle{_nameParts.begin() + 1, _nameParts.end() - 1};
 		for (auto part : middle)
 			s << MiddleInitial(part);
 		return s.str();
