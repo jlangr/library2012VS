@@ -10,15 +10,14 @@ TEST(ANameNormalizer, DISABLED_ReturnsAnEmptyStringWhenGivenSame)
     ASSERT_THAT(NormalizedName{""}.AsString(), Eq(""));
 }
 
-TEST(ANameNormalizer, DISABLED_SwapsFirstAndLastNames)
-{
-    ASSERT_THAT(NormalizedName{"Joseph Heller"}.AsString(), Eq("Heller, Joseph"));
-    ASSERT_THAT(NormalizedName{"Haruki Murakami"}.AsString(), Eq("Murakami, Haruki"));
-}
-
 TEST(ANameNormalizer, DISABLED_SimplyReturnsASingleWordName)
 {
     ASSERT_THAT(NormalizedName{"Plato"}.AsString(), Eq("Plato"));
+}
+
+TEST(ANameNormalizer, DISABLED_SwapsFirstAndLastNames)
+{
+    ASSERT_THAT(NormalizedName{"Haruki Murakami"}.AsString(), Eq("Murakami, Haruki"));
 }
 
 TEST(ANameNormalizer, DISABLED_TrimsWhitespace)
